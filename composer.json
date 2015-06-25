@@ -1,0 +1,15 @@
+{
+    "name": "vendor/f-t-w2",
+    "description": "Description of project FTW2.",
+    "authors": [
+        {
+            "name": "ponbiki",
+            "email": "your@email.here"
+        }
+    ],
+    "require": {
+        "slim/slim": "dev-master",
+        "slim/views": "dev-master",
+        "twig/twig": "dev-master"
+    }
+}
