@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bd3ac30aa86459be5caf53574dd32723",
+    "hash": "8c5449513213f4b7001b067b0a0d9516",
     "packages": [
         {
             "name": "slim/slim",
@@ -111,12 +111,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "56e515b64e0f3bdd18eba0eb478af9d74ae73214"
+                "reference": "2a08a67108404c8af1555bb9316b59f73fe2f076"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/56e515b64e0f3bdd18eba0eb478af9d74ae73214",
-                "reference": "56e515b64e0f3bdd18eba0eb478af9d74ae73214",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/2a08a67108404c8af1555bb9316b59f73fe2f076",
+                "reference": "2a08a67108404c8af1555bb9316b59f73fe2f076",
                 "shasum": ""
             },
             "require": {
@@ -160,7 +160,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2015-05-16 14:12:48"
+            "time": "2015-06-24 16:24:55"
         }
     ],
     "packages-dev": [],
@@ -173,6 +173,9 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=5.4.0",
+        "ext-pdo": "*"
+    },
     "platform-dev": []
 }

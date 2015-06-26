@@ -1,6 +1,6 @@
 {
     "name": "vendor/f-t-w2",
-    "description": "Description of project FTW2.",
+    "description": "User configuratio portal for FTW service",
     "authors": [
         {
             "name": "ponbiki",
@@ -8,8 +8,15 @@
         }
     ],
     "require": {
+        "php": ">=5.4.0",
+        "ext-pdo": "*",
         "slim/slim": "dev-master",
         "slim/views": "dev-master",
         "twig/twig": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "ponbiki\\FTW\\": "src/"
+        }
     }
 }
