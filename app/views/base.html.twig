@@ -2,15 +2,43 @@
 <html>
     <head>
         {% block head %}
-            <link rel="stylesheet" href="style.css" />
-            <title>{% block title %}{% endblock %} - My Webpage</title>
+            <title>{% block title %}{% endblock %}</title>
+            
+            <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+            
+            {% block keywords %}{% endblock %}
+            
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+            <meta name="mobile-web-app-capable" content="yes">
+
+            <meta name="apple-mobile-web-app-capable" content="yes">
+
+            <meta name="application-name" content="FTWPortal">
+
+            <link rel="shortcut icon" sizes="192x192" href="img/applogo.png">
+
+            <link rel="apple-touch-icon" sizes="192x192" href="img/applogo.png">
+            
+            <link rel="stylesheet" href="css/main.css" type="text/css" />
+            
+            <link rel="stylesheet" href="css/jquery-ui.css" type="text/css" />
+            
+            <link rel="stylesheet" href="css/jquery-ui.structure.css" type="text/css" />
+            
+            <link rel="stylesheet" href="css/jquery-ui.theme.css" type="text/css" />
+            
+            <script src="js/jquery.js"></script>
+            
+            <script src="js/jquery-ui.js"></script>
+            {% block scripts %}{% endblock %}
         {% endblock %}
     </head>
-    <body>
+    <body background="img/rms.jpg">
         <div id="content">{% block content %}{% endblock %}</div>
         <div id="footer">
             {% block footer %}
-                &copy; Copyright 2011 by <a href="http://domain.invalid/">you</a>.
+                
             {% endblock %}
         </div>
     </body>

@@ -2,14 +2,27 @@
 
 {% block title %}Index{% endblock %}
 {% block head %}
-    {{ parent() }}
-    <style type="text/css">
-        .important { color: #336699; }
-    </style>
+    {% block keywords %}
+    <meta name="keywords" content="FTW, FTW Portal, {{ page.meta }}">
+    {% endblock %}
+{% endblock %}
+{% block scripts %}
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $( "input[type=submit], a, .jbutton" ).button()
+        });
+        $(document).ready(function() {
+            setTimeout(function() {
+                $( ".notify" ).fadeOut(1000, function () {
+                    //$( ".notify" ).remove();
+                    $( ".notify" ).css({"visibility":"hidden",display:"block"}).slideUp();
+                });
+            }, 3500);
+        });
+    </script>
 {% endblock %}
 {% block content %}
-    <h1>Index</h1>
-    <p class="important">
-        Welcome on my awesome homepage.
-    </p>
+
 {% endblock %}
