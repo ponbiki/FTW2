@@ -10,7 +10,7 @@
 {% block scripts %}
     <script>
         $(function() {
-            $( "input[type=submit], a, .jbutton" ).button()
+            $( "input[type=submit], a, .jbutton" ).button();
         });
         $(document).ready(function() {
             setTimeout(function() {
@@ -24,7 +24,7 @@
 {% endblock %}
 {% block content %}
     <div style="clear: both;">
-        <form method='post' action='index.php' class='nyicp'>
+        <form method='post' action='/' class='nyicp'>
             <h1><img src='img/NYI.png' class='nyiloginlogo' alt='NYI' title='NYI' />
                 <img src='img/ftw_logo.png' class='ftwloginlogo' alt='NYI' title='FTW Portal' />
             </h1>

@@ -38,47 +38,47 @@
     {% endblock %}
     </head>
     <body background="img/rms.jpg">
-        {% block content %}
-            {% block navigation %}{% endblock %}
-            {% block logopg %}{% endblock %}
-            {% block messages %}
-                {% block info %}
-                    {% if info is empty %}
-                    {% else %}
-                        {% for hilite in error %}
-                         <div class="notify"><br />
-                            <div class="ui-widget">
-                                <div class="ui-state-highlight ui-corner-all" style="padding:0 .7em;">
-                                    <p>
-                                        <span class="ui-icon ui-icon-info" style="float:left;margin-right:.3em;"></span>
-                                        <strong>Info:</strong>
-                                        $hilite
-                                    </p>
-                                </div>
-                            </div><br />
-                         </div>
-                        {% endfor %}
-                    {% endif %}
-                {% endblock %}
-                {% block error %}
-                    {% if error is empty %}
-                    {% else %}
-                        {% for alert in error %}
-                        <div class="notify"><br />
-                            <div class="ui-widget">
-                                <div class="ui-state-error ui-corner-all" style="padding:0 .7em;">
-                                    <p>
-                                        <span class="ui-icon ui-icon-alert" style="float:left;margin-right:.3em;"></span>
-                                        <strong>Alert:</strong>
-                                        {{alert}}
-                                    </p>
-                                </div>
-                            </div><br />
-                        </div>
-                        {% endfor %}
-                    {% endif %}
-                {% endblock %}
+        {% block navigation %}{% endblock %}
+        {% block logopg %}{% endblock %}
+        {% block messages %}
+            {% block info %}
+                {% if info is empty %}
+                {% else %}
+                    {% for hilite in error %}
+                     <div class="notify"><br />
+                        <div class="ui-widget">
+                            <div class="ui-state-highlight ui-corner-all" style="padding:0 .7em;">
+                                <p>
+                                    <span class="ui-icon ui-icon-info" style="float:left;margin-right:.3em;"></span>
+                                    <strong>Info:</strong>
+                                    $hilite
+                                </p>
+                            </div>
+                        </div><br />
+                     </div>
+                    {% endfor %}
+                {% endif %}
             {% endblock %}
+            {% block error %}
+                {% if error is empty %}
+                {% else %}
+                    {% for alert in error %}
+                    <div class="notify"><br />
+                        <div class="ui-widget">
+                            <div class="ui-state-error ui-corner-all" style="padding:0 .7em;">
+                                <p>
+                                    <span class="ui-icon ui-icon-alert" style="float:left;margin-right:.3em;"></span>
+                                    <strong>Alert:</strong>
+                                    {{alert}}
+                                </p>
+                            </div>
+                        </div><br />
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            {% endblock %}
+        {% endblock %}
+        {% block content %}        
         {% endblock %}
     </body>
 </html>
