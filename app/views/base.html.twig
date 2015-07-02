@@ -1,45 +1,84 @@
 <!DOCTYPE html>
 <html>
     <head>
-        {% block head %}
-            <title>{% block title %}{% endblock %}</title>
-            
-            <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-            
-            {% block keywords %}{% endblock %}
-            
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block head %}
+        <title>{% block title %}{% endblock %}</title>
 
-            <meta name="mobile-web-app-capable" content="yes">
+        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 
-            <meta name="apple-mobile-web-app-capable" content="yes">
+        {% block keywords %}{% endblock %}
 
-            <meta name="application-name" content="FTWPortal">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <link rel="shortcut icon" sizes="192x192" href="img/applogo.png">
+        <meta name="mobile-web-app-capable" content="yes">
 
-            <link rel="apple-touch-icon" sizes="192x192" href="img/applogo.png">
-            
-            <link rel="stylesheet" href="css/main.css" type="text/css" />
-            
-            <link rel="stylesheet" href="css/jquery-ui.css" type="text/css" />
-            
-            <link rel="stylesheet" href="css/jquery-ui.structure.css" type="text/css" />
-            
-            <link rel="stylesheet" href="css/jquery-ui.theme.css" type="text/css" />
-            
-            <script src="js/jquery.js"></script>
-            
-            <script src="js/jquery-ui.js"></script>
-            {% block scripts %}{% endblock %}
-        {% endblock %}
+        <meta name="apple-mobile-web-app-capable" content="yes">
+
+        <meta name="application-name" content="FTWPortal">
+
+        <link rel="shortcut icon" sizes="192x192" href="img/applogo.png">
+
+        <link rel="apple-touch-icon" sizes="192x192" href="img/applogo.png">
+        
+        <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+        <link rel="stylesheet" href="css/main.css" type="text/css" />
+
+        <link rel="stylesheet" href="css/jquery-ui.css" type="text/css" />
+
+        <link rel="stylesheet" href="css/jquery-ui.structure.css" type="text/css" />
+
+        <link rel="stylesheet" href="css/jquery-ui.theme.css" type="text/css" />
+
+        <script src="js/jquery.js"></script>
+
+        <script src="js/jquery-ui.js"></script>
+        
+        {% block scripts %}{% endblock %}
+    {% endblock %}
     </head>
     <body background="img/rms.jpg">
-        <div id="content">{% block content %}{% endblock %}</div>
-        <div id="footer">
-            {% block footer %}
-                
+        {% block content %}
+            {% block navigation %}{% endblock %}
+            {% block logopg %}{% endblock %}
+            {% block messages %}
+                {% block info %}
+                    {% if info is empty %}
+                    {% else %}
+                        {% for hilite in error %}
+                         <div class="notify"><br />
+                            <div class="ui-widget">
+                                <div class="ui-state-highlight ui-corner-all" style="padding:0 .7em;">
+                                    <p>
+                                        <span class="ui-icon ui-icon-info" style="float:left;margin-right:.3em;"></span>
+                                        <strong>Info:</strong>
+                                        $hilite
+                                    </p>
+                                </div>
+                            </div><br />
+                         </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endblock %}
+                {% block error %}
+                    {% if error is empty %}
+                    {% else %}
+                        {% for alert in error %}
+                        <div class="notify"><br />
+                            <div class="ui-widget">
+                                <div class="ui-state-error ui-corner-all" style="padding:0 .7em;">
+                                    <p>
+                                        <span class="ui-icon ui-icon-alert" style="float:left;margin-right:.3em;"></span>
+                                        <strong>Alert:</strong>
+                                        {{alert}}
+                                    </p>
+                                </div>
+                            </div><br />
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endblock %}
             {% endblock %}
-        </div>
+        {% endblock %}
     </body>
 </html>
