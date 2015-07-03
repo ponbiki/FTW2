@@ -19,7 +19,7 @@
         <link rel="shortcut icon" sizes="192x192" href="img/applogo.png">
 
         <link rel="apple-touch-icon" sizes="192x192" href="img/applogo.png">
-
+        
         <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 
         <link rel="stylesheet" href="css/main.css" type="text/css" />
@@ -32,50 +32,30 @@
 
         <script src="js/jquery.js"></script>
 
-        <script src="js/jquery-ui.js"></script>
-
+        <script src="js/jquery-ui.js"></script> 
+        
         {% block scripts %}{% endblock %}
     {% endblock %}
     </head>
     <body background="img/rms.jpg">
-        {% block navigation %}
-            {% if loggedin and not admin %}
-                <div class="navbar">
-                    <a href="menu.php" title="Menu">Menu</a>
-                    <a href="logout.php" title="Logout">Logout</a>
-                </div>
-            {% elseif admin %}
-                <div class="navbar">
-                    <a href="manage.php" title="User Management">Users</a>
-                    <a href="confmanage.php" title="Config File Management">Configs</a>
-                    <a href="logout.php" title="Logout">Logout</a>
-                </div>
-            {% endif %}
-        {% endblock %}
-        {% block logopg %}
-            <div class="logo">
-                <img class="logo" src="img/ftw_logo.png" title="FTW Logo" />
-            </div>
-            <div class="pagebar" title="{{ page }}">
-                <h2>{{ page }}</h2>
-            </div>
-        {% endblock %}
+        {% block navigation %}{% endblock %}
+        {% block logopg %}{% endblock %}
         {% block messages %}
             {% block info %}
                 {% if info is empty %}
                 {% else %}
                     {% for hilite in error %}
-                         <div class="notify"><br />
-                            <div class="ui-widget">
-                                <div class="ui-state-highlight ui-corner-all" style="padding:0 .7em;">
-                                    <p>
-                                        <span class="ui-icon ui-icon-info" style="float:left;margin-right:.3em;"></span>
-                                        <strong>Info:</strong>
-                                        {{ hilite }}
-                                    </p>
-                                </div>
-                            </div><br />
-                         </div>
+                     <div class="notify"><br />
+                        <div class="ui-widget">
+                            <div class="ui-state-highlight ui-corner-all" style="padding:0 .7em;">
+                                <p>
+                                    <span class="ui-icon ui-icon-info" style="float:left;margin-right:.3em;"></span>
+                                    <strong>Info:</strong>
+                                    $hilite
+                                </p>
+                            </div>
+                        </div><br />
+                     </div>
                     {% endfor %}
                 {% endif %}
             {% endblock %}
@@ -83,22 +63,22 @@
                 {% if error is empty %}
                 {% else %}
                     {% for alert in error %}
-                        <div class="notify"><br />
-                            <div class="ui-widget">
-                                <div class="ui-state-error ui-corner-all" style="padding:0 .7em;">
-                                    <p>
-                                        <span class="ui-icon ui-icon-alert" style="float:left;margin-right:.3em;"></span>
-                                        <strong>Alert:</strong>
-                                        {{ alert }}
-                                    </p>
-                                </div>
-                            </div><br />
-                        </div>
+                    <div class="notify"><br />
+                        <div class="ui-widget">
+                            <div class="ui-state-error ui-corner-all" style="padding:0 .7em;">
+                                <p>
+                                    <span class="ui-icon ui-icon-alert" style="float:left;margin-right:.3em;"></span>
+                                    <strong>Alert:</strong>
+                                    {{alert}}
+                                </p>
+                            </div>
+                        </div><br />
+                    </div>
                     {% endfor %}
                 {% endif %}
             {% endblock %}
         {% endblock %}
-        {% block content %}
+        {% block content %}        
         {% endblock %}
     </body>
 </html>
