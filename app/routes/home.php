@@ -14,7 +14,7 @@ if ($loggedin) {
     }
 }
 
-$app->get('/', function() use ($app) {
+$app->post('/', function() use ($app) {
 
 	$app->render('home.html.twig', []);
 
