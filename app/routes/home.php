@@ -18,7 +18,7 @@ if ($loggedin) {
 
 $app->get('/', function() use ($app) {
     $app->render('home.html.twig', []);
-})->name;
+})->name('home');
 
 $app->post('/', function () use ( $app ) {
     var_dump($app->request()->post('user'));

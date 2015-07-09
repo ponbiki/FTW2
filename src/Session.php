@@ -10,5 +10,18 @@ class Session {
             session_regenerate_id();
             $_SESSION['generated'] = time();
         }
+
+        if (isset($_SESSION['user'])) {
+            $username = $_SESSION['user'];
+            $loggedin = TRUE;
+        } else {
+            $loggedin =FALSE;
+        }
+
+        if (isset($_SESSION['admin'])) {
+            $admin = TRUE;
+        } else {
+            $admin = FALSE;
+        }
     }
 }
