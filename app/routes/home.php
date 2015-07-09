@@ -1,6 +1,8 @@
 <?php
 
-use ponbiki\FTW;
+use ponbiki\FTW as ftw;
+
+new ftw\Session();
 
 if ($loggedin) {
     if ($admin) {
@@ -14,8 +16,7 @@ if ($loggedin) {
     }
 }
 
-$app->post('/', function() use ($app) {
-
-	$app->render('home.html.twig', []);
-
-})->name('home');
+$app->post('/', function () use ( $app ) {
+    var_dump($app->request()->post('user'));
+    var_dump($app->request()->post('pass'));
+});
