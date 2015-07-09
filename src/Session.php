@@ -2,6 +2,11 @@
 namespace ponbiki\FTW;
 
 class Session {
+
+    public $username;
+    public $loggedin;
+    public $admin;
+
     public function __construct()
     {
         ini_set('session.use_only_cookies', true);
@@ -12,16 +17,16 @@ class Session {
         }
 
         if (isset($_SESSION['user'])) {
-            $username = $_SESSION['user'];
-            $loggedin = TRUE;
+            $this->username = $_SESSION['user'];
+            $this->loggedin = TRUE;
         } else {
-            $loggedin =FALSE;
+            $this->loggedin = FALSE;
         }
 
         if (isset($_SESSION['admin'])) {
-            $admin = TRUE;
+            $this->admin = TRUE;
         } else {
-            $admin = FALSE;
+            $this->admin = FALSE;
         }
     }
 }
