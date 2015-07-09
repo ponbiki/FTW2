@@ -36,14 +36,14 @@ class Ssh2
             return $data;
         }
     }
-    
+
     public function scpRecv($remote_file, $local_file)
     {
         if (!$inifile = ssh2_scp_recv($this->con, $remote_file, $local_file)) {
             throw new \Exception('Unable to retrieve file');
-        } 
+        }
     }
-    
+
     public function scpSend($local_file, $remote_file)
     {
         if (!ssh2_scp_send($this->con, $local_file, $remote_file, $this->file_perm)) {
