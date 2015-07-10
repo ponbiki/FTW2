@@ -17,7 +17,10 @@ if ($loggedin) {
 }
 
 $app->get('/', function() use ($app) {
-    $app->render('home.html.twig', []);
+    $app->render('home.html.twig', [
+        'page' => 'FTW Log In',
+        'meta' => ''
+    ]);
 })->name('home');
 
 $app->post('/', function () use ( $app ) {
