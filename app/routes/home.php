@@ -25,8 +25,8 @@ $app->get('/', function() use ($app) {
 
 $app->post('/', function () use ( $app ) {
 
-    
 
+    
     var_dump($app->request()->post('user'));
     var_dump($app->request()->post('pass'));
 });
