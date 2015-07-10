@@ -28,6 +28,7 @@ $app->post('/', function () use ( $app ) {
     $user = filter_var(($app->request()->post('user')), FILTER_SANITIZE_STRING);
     $pass = filter_var(($app->request()->post('pass')), FILTER_SANITIZE_STRING);
 
+
     var_dump($app->request()->post('user'));
     var_dump($app->request()->post('pass'));
 });
