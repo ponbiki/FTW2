@@ -32,6 +32,8 @@ $app->post('/', function () use ( $app ) {
         $error[] = "Not all fields were entered";
     } else {
         $token = password_hash($pass, PASSWORD_DEFAULT);
+        $con = new ftw\Database();
+        
     }
 
 

@@ -4,10 +4,10 @@ namespace ponbiki\FTW;
 
 class Ssh2
 {
-    protected $server =  'blah';
-    protected $port   =  22;
-    protected $ssh_user = 'blah';
-    protected $ssh_pass = 'blah';
+    private $server =  'blah';
+    private $port   =  22;
+    private $ssh_user = 'blah';
+    private $ssh_pass = 'blah';
     public $con;
     protected $file_perm = 0644;
 
