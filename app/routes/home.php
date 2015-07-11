@@ -33,7 +33,7 @@ $app->post('/', function () use ( $app ) {
     } else {
         $token = password_hash($pass, PASSWORD_DEFAULT);
         $con = new ftw\Database();
-        
+
     }
 
 
