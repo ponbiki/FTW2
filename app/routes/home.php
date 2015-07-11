@@ -28,6 +28,12 @@ $app->post('/', function () use ( $app ) {
     $user = filter_var(($app->request()->post('user')), FILTER_SANITIZE_STRING);
     $pass = filter_var(($app->request()->post('pass')), FILTER_SANITIZE_STRING);
 
+    if ($user == "" || $pass == "") {
+        $error[] = "Not all fields were entered";
+    } else {
+        $token = password_hash($pass, PASSWORD_DEFAULT);
+    }
+
 
     var_dump($app->request()->post('user'));
     var_dump($app->request()->post('pass'));

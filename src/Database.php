@@ -1,22 +1,24 @@
 <?php
 namespace ponbiki\FTW;
 
-class DataBase
+class Database
 {
+    //this will move out to its own git excluded file and require in
     private $settings = [
-        'db_host' => '12.34.56.78',
+        'db_host' => 'localhost',
         'db_port' => '3306',
-        'db_name' => 'blah',
-        'db_user' => 'blah',
-        'db_pass' => 'blah',
+        'db_name' => 'ftwportal',
+        'db_user' => 'ftwportal',
+        'db_pass' => 'password',
         'db_charset' => 'utf8'
     ];
     
-    protected $pdo;
+    public $pdo;
+    public $error;
     
-    protected function __construct()
+    public function __construct()
     {
-        if (!$this->pdo = new PDO(
+        if (!$this->pdo = new \PDO(
             sprintf(
                 'mysql:host=%s;dbname=%s;port=%s;charset=%s',
                 $this->settings['db_host'],
