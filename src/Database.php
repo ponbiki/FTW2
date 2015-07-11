@@ -14,6 +14,7 @@ class Database
     ];
     
     public $pdo;
+    public $auth;
     public $error;
     
     public function __construct()
@@ -31,6 +32,10 @@ class Database
             throw new \Exception('Database connection problem');
         }
     }
-    
-    
+
+    public function auth()
+    {
+        $this->auth = $this->pdo->prepare("SELECT username,password,admin,company"
+                . " FROM users WHERE username='?' AND password='?'");
+    }
 }
