@@ -15,7 +15,8 @@ class Database
     
     public $pdo;
     public $auth;
-    public $error;
+    public $error = array();
+    public $array;
     
     public function __construct()
     {
@@ -33,9 +34,13 @@ class Database
         }
     }
 
-    public function auth()
+    public function auth($user, $token)
     {
-        $this->auth = $this->pdo->prepare("SELECT username,password,admin,company"
-                . " FROM users WHERE username='?' AND password='?'");
+        $sth = $this->pdo->prepare("SELECT username,password,admin,company"
+                . " FROM users WHERE username=? AND password=?");
+        $sth = $sth->execute(array($user, $token));
+        $this->array = $sth->fetchObject();
+        return $this->array;
+
     }
 }

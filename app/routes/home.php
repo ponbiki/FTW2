@@ -32,11 +32,11 @@ $app->post('/', function () use ( $app ) {
         $error[] = "Not all fields were entered";
     } else {
         $token = password_hash($pass, PASSWORD_DEFAULT);
+        //default cost of 10 left in place although the jail ideally would use a cost of 9
         $con = new ftw\Database();
+        print_r($con->auth($user,$token));
 
     }
 
 
-    var_dump($app->request()->post('user'));
-    var_dump($app->request()->post('pass'));
 });
