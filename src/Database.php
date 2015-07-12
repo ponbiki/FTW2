@@ -12,12 +12,12 @@ class Database
         'db_pass' => 'password',
         'db_charset' => 'utf8'
     ];
-    
+
     public $pdo;
     public $auth;
     public $error = array();
-    public $array;
-    
+    public $res;
+
     public function __construct()
     {
         if (!$this->pdo = new \PDO(
@@ -34,13 +34,24 @@ class Database
         }
     }
 
-    public function auth($user, $token)
+    public function auth($user, $pass)
     {
         $sth = $this->pdo->prepare("SELECT username,password,admin,company"
-                . " FROM users WHERE username=? AND password=?");
-        $sth = $sth->execute(array($user, $token));
-        $this->array = $sth->fetchObject();
-        return $this->array;
+                . " FROM users WHERE username=?");
+        $sth->execute(array($user));
+        $this->res = $sth->fetch();
 
+        if (password_verify($pass, $this->res['password']) === TRUE) {
+            $_SESSION['user'] = $user;
+            $_SESSION['company'] = $this->res['comany'];
+            if ($this->res['admin'] === 'y') {
+                $_SESSION['admin'] = 'y';
+            } else {
+                $_SESSION['admin'] = 'n';
+            }
+        } else {
+            $this->error[] = "Username/Password invalid.";
+            return $this->error;
+        }
     }
 }

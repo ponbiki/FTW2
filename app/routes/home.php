@@ -31,12 +31,8 @@ $app->post('/', function () use ( $app ) {
     if ($user == "" || $pass == "") {
         $error[] = "Not all fields were entered";
     } else {
-        $token = password_hash($pass, PASSWORD_DEFAULT);
-        //default cost of 10 left in place although the jail ideally would use a cost of 9
         $con = new ftw\Database();
-        print_r($con->auth($user,$token));
-
+        $temp = $con->auth($user, $pass);
+        echo "<pre>";print_r($temp);echo "</pre>";
     }
-
-
 });
