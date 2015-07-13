@@ -17,11 +17,15 @@ if ($loggedin) {
 }
 
 $app->get('/', function() use ($app) {
-    
+
     $page = "FTW Log In";
     $meta = "";
-    $error;
-    
+    if ($_SESSION['error']) {
+        foreach ($_SESSION['error'] as $err) {
+            $error[] = $err;
+        }
+    }
+
     $app->render('home.html.twig', [
         'page' => $page,
         'meta' => $meta,
@@ -30,6 +34,7 @@ $app->get('/', function() use ($app) {
 })->name('home');
 
 unset($error);
+unset($_SESSION['error']);
 
 $app->post('/', function () use ( $app ) {
 
@@ -41,7 +46,9 @@ $app->post('/', function () use ( $app ) {
     } else {
         $con = new ftw\Database();
         $error[] = $con->auth($user, $pass);
-    //    $url = $app->urlFor('/:error', array('error' => $error));
-    //    $app->redirect($url);
+        foreach ($error as $err) {
+            $_SESSION['error'][] = $err;
+        }
+        $app->redirect('/');
     }
 });
