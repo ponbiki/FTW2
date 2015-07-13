@@ -15,7 +15,7 @@ if ($loggedin) {
 $app->get('/', function() use ($app) {
 
     $page = "FTW Log In";
-    $meta = "";
+    $meta = "Login";
 
     $app->render('home.html.twig', [
         'page' => $page,
