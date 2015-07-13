@@ -6,13 +6,9 @@ new ftw\Session();
 
 if ($loggedin) {
     if ($admin) {
-        $app->get('/adminmenu', function () use ($app) {
-            $app->render('admin/adminmenu.html.twig', []);
-        })->name('admin.adminmenu');
+        $app->redirect('/admin/menu');
     } else {
-        $app->get('/menu', function () use ($app) {
-            $app->render('user/menu.html.twig', []);
-        })->name('user.menu');
+        $app->redirect('/user/menu');
     }
 }
 
@@ -41,7 +37,14 @@ $app->post('/', function () use ( $app ) {
         $app->redirect('/');
     } else {
         $con = new ftw\Database();
-        $_SESSION['error'][] = $con->auth($user, $pass);
-        $app->redirect('/');
+        if (!$_SESSION['error'][] = $con->auth($user, $pass)) {
+            if ($_SESSION['admin'] === 'y') {
+                $app->redirect('/admin/menu');
+            } else {
+                $app->redirect('/user/menu');
+            }
+        } else {
+            $app->redirect('/');
+        }
     }
 });
