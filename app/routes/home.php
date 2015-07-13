@@ -20,21 +20,16 @@ $app->get('/', function() use ($app) {
 
     $page = "FTW Log In";
     $meta = "";
-    if ($_SESSION['error']) {
-        foreach ($_SESSION['error'] as $err) {
-            $error[] = $err;
-        }
-    }
 
     $app->render('home.html.twig', [
         'page' => $page,
         'meta' => $meta,
-        'error' => $error
+        'error' => $_SESSION['error']
     ]);
+    
+    unset($_SESSION['error']);
+    
 })->name('home');
-
-unset($error);
-unset($_SESSION['error']);
 
 $app->post('/', function () use ( $app ) {
 
@@ -42,13 +37,11 @@ $app->post('/', function () use ( $app ) {
     $pass = filter_var(($app->request()->post('pass')), FILTER_SANITIZE_STRING);
 
     if ($user == "" || $pass == "") {
-        $error[] = "Not all fields were entered";
+        $_SESSION['error'][] = "Not all fields were entered";
+        $app->redirect('/');
     } else {
         $con = new ftw\Database();
-        $error[] = $con->auth($user, $pass);
-        foreach ($error as $err) {
-            $_SESSION['error'][] = $err;
-        }
+        $_SESSION['error'][] = $con->auth($user, $pass);
         $app->redirect('/');
     }
 });
