@@ -4,11 +4,11 @@
 {% block head %}
     {{ parent() }}
     {% block keywords %}
-    <meta name="keywords" content="FTW, FTW Portal, {{ meta }}">
+        <meta name="keywords" content="FTW, FTW Portal, {{ meta }}">
     {% endblock %}
 {% endblock %}
 {% block scripts %}
-    <script>
+    <script type="text/javascript">
         $(function() {
             $( "input[type=submit], a, .jbutton" ).button();
         });
