@@ -4,11 +4,11 @@
 {% block head %}
     {{ parent() }}
     {% block keywords %}
-        <meta name="keywords" content="FTW, FTW Portal, {{ meta }}">
+        <meta name='keywords' content='FTW, FTW Portal, {{ meta }}'>
     {% endblock %}
 {% endblock %}
 {% block scripts %}
-    <script type="text/javascript">
+    <script type='text/javascript'>
         $(function() {
             $( "input[type=submit], a, .jbutton" ).button();
         });
@@ -23,22 +23,22 @@
     </script>
 {% endblock %}
 {% block content %}
-    <div style="clear: both;">
+    <div style='clear: both;'>
         <form method='post' action='/' class='nyicp'>
             <h1><img src='img/NYI.png' class='nyiloginlogo' alt='NYI' title='NYI' />
                 <img src='img/ftw_logo.png' class='ftwloginlogo' alt='NYI' title='FTW Portal' />
             </h1>
-            <label title="Username">
+            <label title='Username'>
                 <span>Username: </span>
                 <input id='user' type='text' maxlength='24' name='user' value='' placeholder='Enter Username'/>
             </label>
-            <label title="Password">
+            <label title='Password'>
                 <span>Password: </span>
                 <input id='pass' type='password' maxlength='24' name='pass' value='' placeholder='Enter Password'/>
             </label>
-            <label title="Login">
+            <label title='Login'>
                 <span>&nbsp;</span>
-                <input type='submit' value='Login' id="jbutton" />
+                <input type='submit' value='Login' id='jbutton' />
             </label>
         </form>
     </div>

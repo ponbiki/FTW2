@@ -4,11 +4,11 @@
 {% block head %}
     {{ parent() }}
     {% block keywords %}
-        <meta name="keywords" content="FTW, FTW Portal, {{ meta }}">
+        <meta name='keywords' content='FTW, FTW Portal, {{ meta }}'>
     {% endblock %}
 {% endblock %}
 {% block scripts %}
-    <script type="text/javascript">
+    <script type='text/javascript'>
             $(function() {
                 $( "#tabs" ).tabs();
             });
@@ -31,4 +31,62 @@
                 }, 3500);
             });
         </script>
+{% endblock %}
+{% block content %}
+    <div id='tabs'>
+        <ul>
+            <li><a href='#tabs-conf' title='Select Configuration File'>Select Conf File</a></li>
+            <li><a href='#tabs-usr' title='User Options'>User Options</a></li>
+        </ul>
+        <div id='tabs-conf'>
+            <form method='post' action='/user/menu'>
+                <table>
+                    <tr title='Configuration File'>
+                        <td style='float:left;margin-top:8px;margin-right:8px;'>
+                            Edit: 
+                        </td>
+                        <td style='float:right;'>
+                            <select name='conf' id='conf' style='width:200px;'>
+                            {% for choice in confavail %}
+                                <option>{{ choice }}</option>
+                            {% endfor %}
+                            </select>
+                         </td>
+                    </tr>
+                    <tr title='Select'>
+                        <td style='float:left;'>
+                        </td>
+                        <td style='float:right;'>
+                            <input type='submit' value='Select' />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div id='tabs-usr'>
+            <form method='post' action='/user/menu'>
+                <table>
+                    <tr title='User'>
+                        <td style='float:left;margin-top:8px;margin-right:8px;'>
+                            User: 
+                        </td>
+                        <td style="float:right;">
+                            <select name='user' id='user' style='width:200px;'>
+                                {% for userchoice in user %}
+                                <option>{{ userchoice }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr title='select'>
+                        <td style='float:left;'>
+                        </td>
+                        <td style='float:right;'>
+                            <input type='submit' value='Go' />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
 {% endblock %}
