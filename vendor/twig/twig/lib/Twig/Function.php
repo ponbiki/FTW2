@@ -13,6 +13,8 @@
  * Represents a template function.
  *
  * @author Fabien Potencier <fabien@symfony.com>
+ *
+ * @deprecated since 1.12 (to be removed in 2.0)
  */
 class Twig_Function
 {
@@ -27,10 +29,10 @@ class Twig_Function
         $this->callable = $callable;
         $this->options = array_merge(array(
             'needs_environment' => false,
-            'needs_context'     => false,
-            'is_safe'           => null,
-            'is_safe_callback'  => null,
-            'node_class'        => 'Twig_Node_Expression_Function',
+            'needs_context' => false,
+            'is_safe' => null,
+            'is_safe_callback' => null,
+            'node_class' => 'Twig_Node_Expression_Function',
         ), $options);
     }
 

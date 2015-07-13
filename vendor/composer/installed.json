@@ -109,18 +109,18 @@
         "source": {
             "type": "git",
             "url": "https://github.com/twigphp/Twig.git",
-            "reference": "2a08a67108404c8af1555bb9316b59f73fe2f076"
+            "reference": "4e58c4811acbb3b471efc2d94a0d3851ab9059d5"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/twigphp/Twig/zipball/2a08a67108404c8af1555bb9316b59f73fe2f076",
-            "reference": "2a08a67108404c8af1555bb9316b59f73fe2f076",
+            "url": "https://api.github.com/repos/twigphp/Twig/zipball/4e58c4811acbb3b471efc2d94a0d3851ab9059d5",
+            "reference": "4e58c4811acbb3b471efc2d94a0d3851ab9059d5",
             "shasum": ""
         },
         "require": {
             "php": ">=5.5.0"
         },
-        "time": "2015-06-24 16:24:55",
+        "time": "2015-07-07 07:46:15",
         "type": "library",
         "extra": {
             "branch-alias": {

@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8c5449513213f4b7001b067b0a0d9516",
+    "hash": "7396749d972519eec17af228fd51278c",
     "packages": [
         {
             "name": "slim/slim",
@@ -111,12 +111,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "2a08a67108404c8af1555bb9316b59f73fe2f076"
+                "reference": "4e58c4811acbb3b471efc2d94a0d3851ab9059d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/2a08a67108404c8af1555bb9316b59f73fe2f076",
-                "reference": "2a08a67108404c8af1555bb9316b59f73fe2f076",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/4e58c4811acbb3b471efc2d94a0d3851ab9059d5",
+                "reference": "4e58c4811acbb3b471efc2d94a0d3851ab9059d5",
                 "shasum": ""
             },
             "require": {
@@ -160,7 +160,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2015-06-24 16:24:55"
+            "time": "2015-07-07 07:46:15"
         }
     ],
     "packages-dev": [],

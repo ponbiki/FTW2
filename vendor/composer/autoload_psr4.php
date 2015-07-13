@@ -6,5 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'ponbiki\\FTW\\' => array($baseDir . '/src'),
     'Slim\\Views\\' => array($vendorDir . '/slim/views'),
 );

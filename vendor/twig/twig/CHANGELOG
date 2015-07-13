@@ -1,5 +1,6 @@
 * 2.0.0 (201X-XX-XX)
 
+ * removed Twig_Environment::clearTemplateCache()
  * removed Twig_Autoloader (use Composer instead)
  * removed `true` as an equivalent to `html` for the auto-escaping strategy
  * removed pre-1.8 autoescape tag syntax
@@ -10,7 +11,10 @@
 
 * 1.18.3 (2015-XX-XX)
 
- * n/a
+ * added ignore_missing flag to the source function
+ * fixed batch filter with zero items
+ * deprecated Twig_Environment::clearTemplateCache()
+ * fixed sandbox disabling when using the include function
 
 * 1.18.2 (2015-06-06)
 

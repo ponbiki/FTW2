@@ -16,13 +16,6 @@ if ($loggedin) {
     }
 }
 
-$app->get('/', function() use ($app) {
-    $app->render('home.html.twig', [
-        'page' => 'FTW Log In',
-        'meta' => ''
-    ]);
-})->name('home');
-
 $app->post('/', function () use ( $app ) {
 
     $user = filter_var(($app->request()->post('user')), FILTER_SANITIZE_STRING);
@@ -32,7 +25,21 @@ $app->post('/', function () use ( $app ) {
         $error[] = "Not all fields were entered";
     } else {
         $con = new ftw\Database();
-        $temp = $con->auth($user, $pass);
-        echo "<pre>";print_r($temp);echo "</pre>";
+        $error[] = $con->auth($user, $pass);
     }
 });
+
+$app->get('/', function() use ($app) {
+    
+    $page = "FTW Log In";
+    $meta = "";
+    global $error;
+    
+    $app->render('home.html.twig', [
+        'page' => $page,
+        'meta' => $meta,
+        'error' => $error
+    ]);
+})->name('home');
+
+unset($error);
