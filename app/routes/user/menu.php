@@ -9,10 +9,10 @@ $app->get('/user/menu', function() use ($app) {
     if ($_SESSION['loggedin'] !== TRUE) {
         $app->redirect('/');
     }
-    
+
     $page = "Menu";
         $meta = "User Menu";
-    
+
     $app->render('user/menu.html.twig', [
         'page' => $page,
         'meta' => $meta,
@@ -20,8 +20,8 @@ $app->get('/user/menu', function() use ($app) {
         'error' => $_SESSION['error'],
         'info' => $_SESSION['info']
     ]);
-    
+
     unset($_SESSION['error']);
     unset($_SESSION['info']);
-    
+
 })->name('user.menu');

@@ -42,7 +42,7 @@ class Database
         $this->res = $this->sth->fetch(\PDO::FETCH_ASSOC);
         
         if (!$this->res) {
-            $this->error['error'] = "Username/Password invalid.";
+            $this->error = "Username/Password invalid.";
             return $this->error;
         }
 
@@ -56,7 +56,7 @@ class Database
                 $_SESSION['admin'] = FALSE;
             }
         } else {
-            $this->error['error'] = "Username/Password invalid.";
+            $this->error = "Username/Password invalid.";
             unset($_SESSION['loggedin']);
             return $this->error;
         }

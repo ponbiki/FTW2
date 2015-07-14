@@ -5,7 +5,7 @@ use ponbiki\FTW as ftw;
 new ftw\Session();
 
 $app->get('/', function() use ($app) {
-    
+
     if ($_SESSION['loggedin']) {
         if ($_SESSION['admin']) {
             $app->redirect('/admin/menu');
@@ -22,9 +22,9 @@ $app->get('/', function() use ($app) {
         'meta' => $meta,
         'error' => $_SESSION['error']
     ]);
-    
+
     unset($_SESSION['error']);
-    
+
 })->name('home');
 
 $app->post('/', function () use ( $app ) {
@@ -41,6 +41,7 @@ $app->post('/', function () use ( $app ) {
             if ($_SESSION['admin'] === TRUE) {
                 $app->redirect('/admin/menu');
             } elseif ($_SESSION['loggedin'] === TRUE) {
+                unset($_SESSION['error']);
                 $app->redirect('/user/menu');
             }
         } else {
