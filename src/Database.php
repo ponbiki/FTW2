@@ -14,9 +14,9 @@ class Database
     ];
 
     public $pdo;
-    public $auth;
     public $error;
-    public $res;
+    protected $res;
+    protected $sth;
 
     public function __construct()
     {
@@ -36,10 +36,10 @@ class Database
 
     public function auth($user, $pass)
     {
-        $sth = $this->pdo->prepare("SELECT username,password,admin,company"
+        $this->sth = $this->pdo->prepare("SELECT username,password,admin,company"
                 . " FROM users WHERE username=?");
-        $sth->execute(array($user));
-        $this->res = $sth->fetch(\PDO::FETCH_ASSOC);
+        $this->sth->execute(array($user));
+        $this->res = $this->sth->fetch(\PDO::FETCH_ASSOC);
         
         if (!$this->res) {
             $this->error['error'] = "Username/Password invalid.";
@@ -48,14 +48,16 @@ class Database
 
         if (password_verify($pass, $this->res['password']) === TRUE) {
             $_SESSION['user'] = $user;
+            $_SESSION['loggedin'] = TRUE;
             $_SESSION['company'] = $this->res['comany'];
             if ($this->res['admin'] === 'y') {
-                $_SESSION['admin'] = 'y';
+                $_SESSION['admin'] = TRUE;
             } else {
-                $_SESSION['admin'] = 'n';
+                $_SESSION['admin'] = FALSE;
             }
         } else {
             $this->error['error'] = "Username/Password invalid.";
+            unset($_SESSION['loggedin']);
             return $this->error;
         }
     }

@@ -16,28 +16,28 @@
 
             <meta name='application-name' content='FTWPortal'>
 
-            <link rel='shortcut icon' sizes='192x192' href='img/applogo.png'>
+            <link rel='shortcut icon' sizes='192x192' href='/img/applogo.png'>
 
-            <link rel='apple-touch-icon' sizes='192x192' href='img/applogo.png'>
+            <link rel='apple-touch-icon' sizes='192x192' href='/img/applogo.png'>
 
-            <link rel='icon' href='img/favicon.ico' type='image/x-icon'>
+            <link rel='icon' href='/img/favicon.ico' type='image/x-icon'>
 
-            <link rel='stylesheet' href='css/main.css' type='text/css' />
+            <link rel='stylesheet' href='/css/main.css' type='text/css' />
 
-            <link rel='stylesheet' href='css/jquery-ui.css' type='text/css' />
+            <link rel='stylesheet' href='/css/jquery-ui.css' type='text/css' />
 
-            <link rel='stylesheet' href='css/jquery-ui.structure.css' type='text/css' />
+            <link rel='stylesheet' href='/css/jquery-ui.structure.css' type='text/css' />
 
-            <link rel='stylesheet' href='css/jquery-ui.theme.css' type='text/css' />
+            <link rel='stylesheet' href='/css/jquery-ui.theme.css' type='text/css' />
 
-            <script src='js/jquery.js'></script>
+            <script src='/js/jquery.js'></script>
 
-            <script src='js/jquery-ui.js'></script>
+            <script src='/js/jquery-ui.js'></script>
 
         {% block scripts %}{% endblock %}
     {% endblock %}
         </head>
-            <body background='img/rms.jpg'>
+            <body background='/img/rms.jpg'>
             {% block navigation %}
                 {% if loggedin and not admin %}
                     <div class='navbar'>
@@ -53,12 +53,14 @@
                 {% endif %}
             {% endblock %}
             {% block logopg %}
+                {% if loggedin %}
                 <div class='logo'>
-                    <img class='logo' src='img/ftw_logo.png' title='FTW Logo' />
+                    <img class='logo' src='/img/ftw_logo.png' title='FTW Logo' />
                 </div>
                 <div class='pagebar' title='{{ page }}'>
                     <h2>{{ page }}</h2>
                 </div>
+                {% endif %}
             {% endblock %}
         {% block messages %}
             {% block info %}

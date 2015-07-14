@@ -4,15 +4,15 @@ use ponbiki\FTW as ftw;
 
 new ftw\Session();
 
-if ($loggedin) {
-    if ($admin) {
-        $app->redirect('/admin/menu');
-    } else {
-        $app->redirect('/user/menu');
-    }
-}
-
 $app->get('/', function() use ($app) {
+    
+    if ($_SESSION['loggedin']) {
+        if ($_SESSION['admin']) {
+            $app->redirect('/admin/menu');
+        } else {
+            $app->redirect('/user/menu');
+        }
+    }
 
     $page = "FTW Log In";
     $meta = "Login";
@@ -38,9 +38,9 @@ $app->post('/', function () use ( $app ) {
     } else {
         $con = new ftw\Database();
         if (!$_SESSION['error'][] = $con->auth($user, $pass)) {
-            if ($_SESSION['admin'] === 'y') {
+            if ($_SESSION['admin'] === TRUE) {
                 $app->redirect('/admin/menu');
-            } else {
+            } elseif ($_SESSION['loggedin'] === TRUE) {
                 $app->redirect('/user/menu');
             }
         } else {
