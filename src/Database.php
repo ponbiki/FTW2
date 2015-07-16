@@ -1,4 +1,5 @@
 <?php
+
 namespace ponbiki\FTW;
 
 class Database
@@ -40,7 +41,7 @@ class Database
                 . " FROM users WHERE username=?");
         $this->sth->execute(array($user));
         $this->res = $this->sth->fetch(\PDO::FETCH_ASSOC);
-        
+
         if (!$this->res) {
             $this->error = "Username/Password invalid.";
             return $this->error;
