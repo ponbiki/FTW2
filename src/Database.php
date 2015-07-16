@@ -2,7 +2,7 @@
 
 namespace ponbiki\FTW;
 
-class Database
+class Database implements iDatabase
 {
     //this will move out to its own git excluded file and require in
     private $settings = [
