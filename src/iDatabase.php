@@ -2,6 +2,7 @@
 
 namespace ponbiki\FTW;
 
-interface iDatabase {
+interface iDatabase
+{
     public function auth($user, $pass);
 }
