@@ -8,4 +8,5 @@ interface iVersion
     public function pull();
     public function commit();
     public function push();
+    public function revert();
 }
