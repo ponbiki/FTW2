@@ -9,16 +9,20 @@ $app->get('/user/menu', function() use ($app) {
     if ($_SESSION['loggedin'] !== TRUE) {
         $app->redirect('/');
     }
-
+    
+    $con = new ftw\Database();
+    $con->confAvail();
+    echo $_SESSION['confs'];
     $page = "Menu";
-        $meta = "User Menu";
+    $meta = "User Menu";
 
     $app->render('user/menu.html.twig', [
         'page' => $page,
         'meta' => $meta,
         'loggedin' => $_SESSION['loggedin'],
         'error' => $_SESSION['error'],
-        'info' => $_SESSION['info']
+        'info' => $_SESSION['info'],
+        'confs' => $_SESSION['confs']
     ]);
 
     unset($_SESSION['error']);
