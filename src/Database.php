@@ -68,8 +68,13 @@ class Database implements iDatabase
         $this->sth = $this->pdo->preppare("SELECT conf,type FROM confs WHERE company=?");
         $this->sth->execute(array($_SESSION['company']));
         $this->res = $this->sth->fetch(\PDO::FETCH_ASSOC);
-        foreach ($this->res as $conf) {
-            $_SESSION['conf'][] = $conf;
+        if (empty($this-res)) {
+            $this->error = "No configurations available for editing.";
+            return $this->error;
+        } else {
+            foreach ($this->res as $conf) {
+                $_SESSION['conf'][] = $conf;
+            }
         }
     }
 }
