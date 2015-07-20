@@ -9,12 +9,15 @@ $app->get('/user/menu', function() use ($app) {
     if ($_SESSION['loggedin'] !== TRUE) {
         $app->redirect('/');
     }
-    
+
     $con = new ftw\Database();
-    $con->confAvail();
-    echo $_SESSION['confs'];
+    if (!$_SESSION['error'][] = $con->confAvail()) {
+        unset($_SESSION['error']);
+        $confs = $_SESSION['confs'];
+    }
     $page = "Menu";
     $meta = "User Menu";
+    $user[] = $_SESSION['user'];
 
     $app->render('user/menu.html.twig', [
         'page' => $page,
@@ -22,7 +25,8 @@ $app->get('/user/menu', function() use ($app) {
         'loggedin' => $_SESSION['loggedin'],
         'error' => $_SESSION['error'],
         'info' => $_SESSION['info'],
-        'confs' => $_SESSION['confs']
+        'confs' => $confs,
+        'user' => $user
     ]);
 
     unset($_SESSION['error']);

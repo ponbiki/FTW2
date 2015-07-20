@@ -50,7 +50,7 @@ class Database implements iDatabase
         if (password_verify($pass, $this->res['password']) === TRUE) {
             $_SESSION['user'] = $user;
             $_SESSION['loggedin'] = TRUE;
-            $_SESSION['company'] = $this->res['comany'];
+            $_SESSION['company'] = $this->res['company'];
             if ($this->res['admin'] === 'y') {
                 $_SESSION['admin'] = TRUE;
             } else {
@@ -68,7 +68,7 @@ class Database implements iDatabase
         $this->sth = $this->pdo->prepare("SELECT conf FROM confs WHERE company=?");
         $this->sth->execute(array($_SESSION['company']));
         $this->res = $this->sth->fetch(\PDO::FETCH_ASSOC);
-        if (empty($this->res)) {
+        if (!$this->res) {
             $this->error = "No configurations available for editing.";
             return $this->error;
         } else {
