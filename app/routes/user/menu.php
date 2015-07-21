@@ -13,7 +13,6 @@ $app->get('/user/menu', function() use ($app) {
     $con = new ftw\Database();
     if (!$_SESSION['error'][] = $con->confAvail()) {
         unset($_SESSION['error']);
-        $confs = $_SESSION['confs'];
     }
     $page = "Menu";
     $meta = "User Menu";
@@ -25,7 +24,7 @@ $app->get('/user/menu', function() use ($app) {
         'loggedin' => $_SESSION['loggedin'],
         'error' => $_SESSION['error'],
         'info' => $_SESSION['info'],
-        'confs' => $confs,
+        'confs' => $_SESSION['confs'],
         'user' => $user
     ]);
 
@@ -33,3 +32,9 @@ $app->get('/user/menu', function() use ($app) {
     unset($_SESSION['info']);
 
 })->name('user.menu');
+
+$app->post('/user/menu', function () use ($app) {
+    if (isset($_POST['conf'])) {
+        
+    }
+});

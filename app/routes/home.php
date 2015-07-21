@@ -27,7 +27,7 @@ $app->get('/', function() use ($app) {
 
 })->name('home');
 
-$app->post('/', function () use ( $app ) {
+$app->post('/', function () use ($app) {
 
     $user = filter_var(($app->request()->post('user')), FILTER_SANITIZE_STRING);
     $pass = filter_var(($app->request()->post('pass')), FILTER_SANITIZE_STRING);
