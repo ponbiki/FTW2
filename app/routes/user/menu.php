@@ -12,7 +12,9 @@ $app->get('/user/menu', function() use ($app) {
 
     $con = new ftw\Database();
     if (!$_SESSION['error'][] = $con->confAvail()) {
-        unset($_SESSION['error']);
+        if (empty($_SESSION['error'])) {
+            unset($_SESSION['error']);
+        }
     }
     $page = "Menu";
     $meta = "User Menu";
@@ -33,8 +35,10 @@ $app->get('/user/menu', function() use ($app) {
 
 })->name('user.menu');
 
-$app->post('/user/menu', function () use ($app) {
+$app->post('/user/menu/', function () use ($app) {
     if (isset($_POST['conf'])) {
-        
+        if (!in_array($_POST['conf'], $_SESSION['confs'])) {
+            $_SESSION['error'][] = "Please select a valid configuration file.";
+        }
     }
 });
