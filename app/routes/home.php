@@ -23,7 +23,7 @@ $app->get('/', function() use ($app) {
         'error' => $_SESSION['error']
     ]);
 
-    unset($_SESSION['error']);
+    ftw\Session::clear();
 
 })->name('home');
 

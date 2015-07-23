@@ -29,7 +29,6 @@ $app->get('/user/menu', function() use ($app) {
         'user' => $user
     ]);
 
-    unset($_SESSION['error']);
-    unset($_SESSION['info']);
+    ftw\Session::clear();
 
 })->name('user.menu');

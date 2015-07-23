@@ -24,4 +24,10 @@ class Session implements iSession
             session_destroy();
         }
     }
+
+    public static function clear()
+    {
+        unset($_SESSION['error']);
+        unset($_SESSION['info']);
+    }
 }
