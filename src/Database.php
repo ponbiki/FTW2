@@ -62,7 +62,7 @@ class Database implements iDatabase
             return $this->error;
         }
     }
-    
+
     public function confAvail()
     {
         $this->sth = $this->pdo->prepare("SELECT conf FROM confs WHERE company=?");

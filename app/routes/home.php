@@ -41,7 +41,7 @@ $app->post('/', function () use ($app) {
             if ($_SESSION['admin'] === TRUE) {
                 $app->redirect('/admin/menu');
             } elseif ($_SESSION['loggedin'] === TRUE) {
-                unset($_SESSION['error']);
+                ftw\Session::clear();
                 $app->redirect('/user/menu');
             }
         } else {
