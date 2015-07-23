@@ -70,7 +70,7 @@ class Database implements iDatabase
         $this->res = $this->sth->fetch(\PDO::FETCH_ASSOC);
         if (!$this->res) {
             $this->error = "No configurations available for editing.";
-            return $this->error;
+            $_SESSION['error'][] = $this->error;
         } else {
             $_SESSION['confs'] = $this->res;
         }

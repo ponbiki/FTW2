@@ -11,10 +11,9 @@ $app->get('/user/menu', function() use ($app) {
     }
 
     $con = new ftw\Database();
-    if (!$_SESSION['error'][] = $con->confAvail()) {
-        if (empty($_SESSION['error'])) {
-            unset($_SESSION['error']);
-        }
+    $con->confAvail();
+    if (empty($_SESSION['error'])) {
+        unset($_SESSION['error']);
     }
     $page = "Menu";
     $meta = "User Menu";

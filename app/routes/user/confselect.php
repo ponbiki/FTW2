@@ -4,15 +4,13 @@ use ponbiki\FTW as ftw;
 
 new ftw\Session();
 
-$app->post('/user/menu/', function () use ($app) {
+$app->post('/user/confselect', function () use ($app) {
 
     if ($_SESSION['loggedin'] !== TRUE) {
         $app->redirect('/');
     }
 
-    if (isset($_POST['conf'])) {
-        if (!in_array($_POST['conf'], $_SESSION['confs'])) {
-            $_SESSION['error'][] = "Please select a valid configuration file.";
-        }
-    }
+    $_SESSION[info][] = "It worked";
+    $app->redirect('/user/menu');
+    
 });
