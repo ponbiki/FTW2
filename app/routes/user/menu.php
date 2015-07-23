@@ -34,11 +34,3 @@ $app->get('/user/menu', function() use ($app) {
     unset($_SESSION['info']);
 
 })->name('user.menu');
-
-$app->post('/user/menu/', function () use ($app) {
-    if (isset($_POST['conf'])) {
-        if (!in_array($_POST['conf'], $_SESSION['confs'])) {
-            $_SESSION['error'][] = "Please select a valid configuration file.";
-        }
-    }
-});
