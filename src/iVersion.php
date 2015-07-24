@@ -4,9 +4,8 @@ namespace ponbiki\FTW;
 
 interface iVersion
 {
-    public function chkVersion();
-    public function pull();
-    public function commit();
-    public function push();
-    public function revert();
+    public static function chkVersions();
+    public static function pull();
+    public static function commit();
+    public static function push();
 }

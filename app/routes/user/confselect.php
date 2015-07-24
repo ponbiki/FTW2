@@ -17,7 +17,11 @@ $app->post('/user/confselect', function () use ($app) {
         $_SESSION['error'][] = "Please select a valid configuration file";
         $app->redirect('/user/menu');
     } else {
-        
+        if (ftw\Version::chkVersions() !== TRUE) {
+            ftw\Version::pull();
+        } else {
+            
+        }
     }
 
     $_SESSION[info][] = "It worked";
