@@ -19,8 +19,11 @@ $app->post('/user/confselect', function () use ($app) {
     } else {
         if (ftw\Version::chkVersions() !== TRUE) {
             ftw\Version::pull();
-        } else {
-            
+            // if confpull method gets no conf file some error
+            // else cp to a dated stored backup
+            // (probably in sql order by date hold 5
+            // then delete oldest and add new thereafter)
+            // as well as a working copy for regex attack
         }
     }
 
