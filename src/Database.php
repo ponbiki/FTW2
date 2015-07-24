@@ -65,14 +65,20 @@ class Database implements iDatabase
 
     public function confAvail()
     {
-        $this->sth = $this->pdo->prepare("SELECT conf FROM confs WHERE company=?");
+        $this->sth = $this->pdo->prepare("SELECT conf,type FROM confs WHERE company=?");
         $this->sth->execute(array($_SESSION['company']));
-        $this->res = $this->sth->fetch(\PDO::FETCH_ASSOC);
+        $this->res = $this->sth->fetchAll(\PDO::FETCH_ASSOC);
         if (!$this->res) {
             $this->error = "No configurations available for editing.";
             $_SESSION['error'][] = $this->error;
         } else {
-            $_SESSION['confs'] = $this->res;
+            $confarray = $this->res;
+            unset($_SESSION['confs']);
+            unset($_SESSION['conftype']);
+            for ($i = 0; $i < count($confarray); $i++) {
+                $_SESSION['confs'][] = $confarray[$i]['conf'];
+                $_SESSION['conftype'][$confarray[$i]['conf']] = $confarray[$i]['type'];
+            }
         }
     }
 }
