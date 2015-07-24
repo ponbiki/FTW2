@@ -1,0 +1,33 @@
+mysql> show tables;
++---------------------+
+| Tables_in_ftwportal |
++---------------------+
+| confs               |
+| users               |
++---------------------+
+2 rows in set (0.00 sec)
+
+mysql> describe users;
++----------+---------------+------+-----+---------+-------+
+| Field    | Type          | Null | Key | Default | Extra |
++----------+---------------+------+-----+---------+-------+
+| username | varchar(32)   | NO   | PRI |         |       |
+| password | varchar(2048) | NO   |     | NULL    |       |
+| admin    | char(1)       | YES  |     | n       |       |
+| company  | varchar(32)   | NO   | MUL | NULL    |       |
++----------+---------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> describe confs;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| conf    | varchar(32) | NO   | PRI | NULL    |       |
+| company | varchar(32) | NO   | MUL | NULL    |       |
+| type    | varchar(3)  | YES  |     | bas     |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+
+
+Application <--> SVNworkspace <--> SVNRepo <--> FTW
