@@ -6,6 +6,7 @@ class Version implements iVersion
 {
     public static function chkVersions()
     {
+        return TRUE;
         //returns TRUE if master and workspace are at the same ver
         //returns FALSE if master and workspace are not at the same ver
     }

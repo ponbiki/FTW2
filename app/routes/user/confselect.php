@@ -18,7 +18,7 @@ $app->post('/user/confselect', function () use ($app) {
         $app->redirect('/user/menu');
     } else {
         $_SESSION['info'][] = "Conf is in the array";
-        if (/*ftw\Version::chkVersions()*/TRUE !== TRUE) {
+        if (ftw\Version::chkVersions() !== TRUE) {
             //ftw\Version::pull();
             // if confpull method gets no conf file some error
             // else cp to a dated stored backup
@@ -29,7 +29,7 @@ $app->post('/user/confselect', function () use ($app) {
             $_SESSION['info'][] = $_SESSION['conftype'][$conf];
         }
     }
-    
+
     $_SESSION['info'][] = "It worked";
     $app->redirect('/user/menu');
 
