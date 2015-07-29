@@ -32,5 +32,4 @@ $app->post('/user/confselect', function () use ($app) {
 
     $_SESSION['info'][] = "It worked";
     $app->redirect('/user/menu');
-
 });
