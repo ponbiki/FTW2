@@ -63,10 +63,10 @@ class Database implements iDatabase
         }
     }
 
-    public function confAvail()
+    public function confAvail($company)
     {
         $this->sth = $this->pdo->prepare("SELECT conf,type FROM confs WHERE company=?");
-        $this->sth->execute(array($_SESSION['company']));
+        $this->sth->execute(array($company));
         $this->res = $this->sth->fetchAll(\PDO::FETCH_ASSOC);
         if (!$this->res) {
             $this->error = "No configurations available for editing.";

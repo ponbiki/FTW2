@@ -16,8 +16,8 @@ class UseDatabase
         $this->db->auth($user, $pass);
     }
 
-    public function doConfAvail()
+    public function doConfAvail(ftw\iDatabase $company)
     {
-        $this->db->confAvail;
+        $this->db->confAvail($company);
     }
 }

@@ -11,7 +11,7 @@ $app->get('/user/menu', function() use ($app) {
     }
 
     $con = new ftw\Database();
-    $con->confAvail();
+    $con->useConfAvail($company);
     $page = "Menu";
     $meta = "User Menu";
     $user[] = $_SESSION['user'];
