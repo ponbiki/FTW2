@@ -29,15 +29,15 @@ $app->get('/', function() use ($app) {
 
 $app->post('/', function () use ($app) {
 
-    $user = filter_var(($app->request()->post('user')), FILTER_SANITIZE_STRING);
-    $pass = filter_var(($app->request()->post('pass')), FILTER_SANITIZE_STRING);
+    $cred['user'] = filter_var(($app->request()->post('user')), FILTER_SANITIZE_STRING);
+    $cred['pass'] = filter_var(($app->request()->post('pass')), FILTER_SANITIZE_STRING);
 
-    if ($user == "" || $pass == "") {
+    if ($cred['user'] == "" || $cred['pass'] == "") {
         $_SESSION['error'][] = "Not all fields were entered";
         $app->redirect('/');
     } else {
-        $con = new ftw\Database();
-        if (!$_SESSION['error'][] = $con->auth($user, $pass)) {
+        $con = new ftw\UseDatabase();
+        if (!$_SESSION['error'][] = $con->doAuth($cred)) {
             if ($_SESSION['admin'] === TRUE) {
                 $app->redirect('/admin/menu');
             } elseif ($_SESSION['loggedin'] === TRUE) {

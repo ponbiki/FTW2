@@ -11,9 +11,9 @@ class UseDatabase
         $this->db = new ftw\Database();
     }
 
-    public function doAuth(ftw\iDatabase $user, $pass)
+    public function doAuth(ftw\iDatabase $cred)
     {
-        $this->db->auth($user, $pass);
+        $this->db->auth($cred);
     }
 
     public function doConfAvail(ftw\iDatabase $company)
