@@ -10,9 +10,8 @@ $app->get('/user/menu', function() use ($app) {
         $app->redirect('/');
     }
 
-    $company['name'] = $_SESSION['company'];
-    $con = new ftw\UseDatabase();
-    $con->doConfAvail($company['name']);
+    $con = new ftw\Database();
+    $con->confAvail();
     $page = "Menu";
     $meta = "User Menu";
     $user[] = $_SESSION['user'];

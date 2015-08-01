@@ -35,11 +35,11 @@ class Database implements iDatabase
         }
     }
 
-    public function auth($cred)
+    public function auth($user, $pass)
     {
         $this->sth = $this->pdo->prepare("SELECT username,password,admin,company"
                 . " FROM users WHERE username=?");
-        $this->sth->execute(array($cred['user']));
+        $this->sth->execute(array($user));
         $this->res = $this->sth->fetch(\PDO::FETCH_ASSOC);
 
         if (!$this->res) {
@@ -47,7 +47,7 @@ class Database implements iDatabase
             return $this->error;
         }
 
-        if (password_verify($cred['pass'], $this->res['password']) === TRUE) {
+        if (password_verify($pass, $this->res['password']) === TRUE) {
             $_SESSION['user'] = $user;
             $_SESSION['loggedin'] = TRUE;
             $_SESSION['company'] = $this->res['company'];
@@ -63,10 +63,10 @@ class Database implements iDatabase
         }
     }
 
-    public function confAvail($company)
+    public function confAvail()
     {
         $this->sth = $this->pdo->prepare("SELECT conf,type FROM confs WHERE company=?");
-        $this->sth->execute(array($company['name']));
+        $this->sth->execute(array($_SESSION['company']));
         $this->res = $this->sth->fetchAll(\PDO::FETCH_ASSOC);
         if (!$this->res) {
             $this->error = "No configurations available for editing.";

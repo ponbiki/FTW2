@@ -4,6 +4,6 @@ namespace ponbiki\FTW;
 
 interface iDatabase
 {
-    public function auth($cred);
-    public function confAvail($company);
+    public function auth($user, $pass);
+    public function confAvail();
 }
