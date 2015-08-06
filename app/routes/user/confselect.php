@@ -19,13 +19,14 @@ $app->post('/user/confselect', function () use ($app) {
     } else {
         $_SESSION['info'][] = "Conf is in the array";
         if (ftw\Version::chkVersions() !== TRUE) {
-            //ftw\Version::pull();
+            ftw\Version::pull();
             // if confpull method gets no conf file some error
             // else cp to a dated stored backup
             // (probably in sql order by date hold 5
             // then delete oldest and add new thereafter)
             // as well as a working copy for regex attack
         } else {
+            
             $_SESSION['info'][] = $_SESSION['conftype'][$conf];
         }
     }

@@ -9,7 +9,9 @@ $app->get('/user/menu', function() use ($app) {
     if ($_SESSION['loggedin'] !== TRUE) {
         $app->redirect('/');
     }
-
+    
+    echo "<pre>";print_r($_SESSION);echo "</pre>";
+    
     $con = new ftw\Database();
     $con->confAvail();
     $page = "Menu";
