@@ -1,0 +1,30 @@
+<?php
+$name='nyi';
+$hostname[]='nyi.net'; // These are required in the default pool
+$hostname[]='iny.com';
+$hostname[]='nyi.nyc';
+$hostname[]='nyi.city';
+//$sslhostname[]='nyi.net';
+$checkurl='/';
+$checkhost='www.nyi.net';
+$backend[] = array(
+ ip => '66.111.15.10',
+ port => 80,
+ weight => 50,
+ maxconn => 250
+ );
+$origin['usa'] = 'nj1';
+$origin['global'] = 'ny1';
+$ssd=1;
+$ddos=1;
+$limit_error='18';
+$limit_post='28';
+$varnish_pool='general';
+//$static_ttl='bignum';
+$dynamic_ttl='30m';
+$keep = '2h';
+//$use_device_global="1"; // only if they need it for all
+$use_device[] = "www.nyi.net";
+//$zone='global';
+//$pool='default';
+?>
