@@ -88,5 +88,4 @@ class Database implements iDatabase
         $this->sth->execute(array($conf, $_SESSION['conftype'][$conf]));
         return $this->sth;
     }
-
 }
