@@ -81,4 +81,12 @@ class Database implements iDatabase
             }
         }
     }
+
+    public function confBackup($conf)
+    {
+        $this->sth = $this->pdo->prepare("SELECT id,datetime FROM confsaves WHERE conf=? AND type=?");
+        $this->sth->execute(array($conf, $_SESSION['conftype'][$conf]));
+        return $this->sth;
+    }
+
 }

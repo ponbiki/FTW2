@@ -25,7 +25,7 @@ $app->post('/user/confselect', function () use ($app) {
     if ($_SESSION['conftype'][$conf] === 'bas') {
         $tmp = ftw\BasConf::loadConf($conf);
     } elseif ($_SESSION['conftype'][$conf] === 'adv') {
-        ftw\AdvConf::loadConf($conf);
+        //some stuff;
     }
 
     $_SESSION['info'][] = $tmp;

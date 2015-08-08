@@ -3,9 +3,10 @@ mysql> show tables;
 | Tables_in_ftwportal |
 +---------------------+
 | confs               |
+| confsaves           |
 | users               |
 +---------------------+
-2 rows in set (0.00 sec)
+3 rows in set (0.01 sec)
 
 mysql> describe users;
 +----------+---------------+------+-----+---------+-------+
@@ -28,6 +29,16 @@ mysql> describe confs;
 +---------+-------------+------+-----+---------+-------+
 3 rows in set (0.00 sec)
 
-
+mysql> describe confsaves;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| id       | int(11)     | NO   | PRI | NULL    | auto_increment |
+| datetime | int(11)     | NO   | MUL | NULL    |                |
+| conf     | varchar(32) | NO   | MUL | NULL    |                |
+| type     | varchar(3)  | NO   |     | NULL    |                |
+| file     | text        | NO   |     | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
 
 Application <--> SVNworkspace <--> SVNRepo <--> FTW
