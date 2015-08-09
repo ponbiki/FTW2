@@ -28,6 +28,6 @@ $app->post('/user/confselect', function () use ($app) {
         //some stuff;
     }
 
-    $_SESSION['info'][] = $file_array;
+    $_SESSION[$conf] = $file_array;
     $app->redirect('/user/menu');
 });
