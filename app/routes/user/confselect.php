@@ -18,7 +18,7 @@ $app->post('/user/confselect', function () use ($app) {
         $app->redirect('/user/menu');
     } elseif (ftw\Version::chkVersions() !== TRUE) {
         ftw\Version::pull();
-        // if confpull method gets no conf file some $_SESSION['error']
+        // if confpull method gets pool some $_SESSION['error']
         //$app->redirect('/user/menu');
     }
 

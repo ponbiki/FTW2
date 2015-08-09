@@ -19,6 +19,7 @@ class Database implements iDatabase
     protected $sth;
     protected $del;
     protected $sav;
+    private $maxBackup = 25;
 
     public function __construct()
     {
@@ -86,7 +87,7 @@ class Database implements iDatabase
     {
         $this->sth = $this->pdo->prepare("SELECT id,datetime,file FROM confsaves WHERE conf=? AND type=?");
         $this->sth->execute(array($conf, $_SESSION['conftype'][$conf]));
-        while ($this->sth->rowCount() > 25) {
+        while ($this->sth->rowCount() > $this->maxBackup) {
             $this->res = $this->sth->fetchColumn();
             $this->del = $this->pdo->prepare("DELETE FROM confsaves WHERE id=?");
             $this->del->execute(array($this->res));

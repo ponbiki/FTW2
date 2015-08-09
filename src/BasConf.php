@@ -15,6 +15,11 @@ class BasConf implements iConf
             $con = new ftw\Database();
             $con->confBackup($conf, $file);
             $file_array = explode(PHP_EOL, $file);
+            foreach ($file_array as $index => $value) {
+                if (preg_match('/^\$name\s*=+/')) {
+                    
+                }
+            }
             return $file_array;
         }
     }

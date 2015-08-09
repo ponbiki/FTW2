@@ -8,10 +8,15 @@ class Ssh2
     private $port   =  22;
     private $ssh_user = 'blah';
     private $ssh_pass = 'blah';
-    public $con;
+    protected $con;
     protected $file_perm = 0644;
 
     public function __construct()
+    {
+        $this->con = $this->connect();
+    }
+
+    protected function connect() 
     {
         if (!$this->con = ssh2_connect($this->server, $this->port)) {
             throw new \Exception('Failed to establish connection');
@@ -51,7 +56,7 @@ class Ssh2
         }
     }
 
-    public function disconnect()
+    protected function disconnect()
     {
      	ssh2_exec($this->con, 'exit');
         unset($this->con);
