@@ -28,7 +28,7 @@ $app->post('/user/confselect', function () use ($app) {
         //some stuff;
     }
 
-    $_SESSION['info'][] = $tmp;
+    $_SESSION['sql'] = $tmp;
     $_SESSION['info'][] = $_SESSION['conftype'][$conf];
     $app->redirect('/user/menu');
 });

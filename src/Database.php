@@ -15,9 +15,10 @@ class Database implements iDatabase
     ];
 
     public $pdo;
-    public $error;
     protected $res;
     protected $sth;
+    protected $del;
+    protected $sav;
 
     public function __construct()
     {
@@ -69,8 +70,7 @@ class Database implements iDatabase
         $this->sth->execute(array($_SESSION['company']));
         $this->res = $this->sth->fetchAll(\PDO::FETCH_ASSOC);
         if (!$this->res) {
-            $this->error = "No configurations available for editing.";
-            $_SESSION['error'][] = $this->error;
+            $_SESSION['error'][] = "No configurations available for editing.";
         } else {
             $confarray = $this->res;
             unset($_SESSION['confs']);
@@ -82,10 +82,18 @@ class Database implements iDatabase
         }
     }
 
-    public function confBackup($conf)
+    public function confBackup($conf, $file)
     {
-        $this->sth = $this->pdo->prepare("SELECT id,datetime FROM confsaves WHERE conf=? AND type=?");
+        $this->sth = $this->pdo->prepare("SELECT id,datetime,file FROM confsaves WHERE conf=? AND type=?");
         $this->sth->execute(array($conf, $_SESSION['conftype'][$conf]));
-        return $this->sth;
+        while ($this->sth->rowCount() > 25) {
+            $this->res = $this->sth->fetchColumn();
+            $this->del = $this->pdo->prepare("DELETE FROM confsaves WHERE id=?");
+            $this->del->execute(array($this->res));
+            $this->sth->execute(array($conf, $_SESSION['conftype'][$conf]));
+        }
+        date_default_timezone_set("UTC");
+        $this->sav = $this->pdo->prepare("INSERT INTO confsaves (datetime,conf,type,file) VALUES(?,?,?,?)");
+        $this->sav->execute(array(time(), $conf, $_SESSION['conftype'][$conf], $file));
     }
 }
