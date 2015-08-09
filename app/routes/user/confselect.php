@@ -23,12 +23,11 @@ $app->post('/user/confselect', function () use ($app) {
     }
 
     if ($_SESSION['conftype'][$conf] === 'bas') {
-        $tmp = ftw\BasConf::loadConf($conf);
+        $file_array = ftw\BasConf::loadConf($conf);
     } elseif ($_SESSION['conftype'][$conf] === 'adv') {
         //some stuff;
     }
 
-    $_SESSION['sql'] = $tmp;
-    $_SESSION['info'][] = $_SESSION['conftype'][$conf];
+    $_SESSION['info'][] = $file_array;
     $app->redirect('/user/menu');
 });

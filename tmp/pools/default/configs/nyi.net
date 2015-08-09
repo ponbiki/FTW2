@@ -7,12 +7,7 @@ $hostname[]='nyi.city';
 //$sslhostname[]='nyi.net';
 $checkurl='/';
 $checkhost='www.nyi.net';
-$backend[] = array(
- ip => '66.111.15.10',
- port => 80,
- weight => 50,
- maxconn => 250
- );
+$backend[] = array(ip => '66.111.15.10', port => 80, weight => 50, maxconn => 250);
 $origin['usa'] = 'nj1';
 $origin['global'] = 'ny1';
 $ssd=1;

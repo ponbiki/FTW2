@@ -14,7 +14,8 @@ class BasConf implements iConf
         } else {
             $con = new ftw\Database();
             $con->confBackup($conf, $file);
-            return "hahaha";
+            $file_array = explode(PHP_EOL, $file);
+            return $file_array;
         }
     }
 
