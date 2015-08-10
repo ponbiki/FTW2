@@ -18,16 +18,22 @@ class BasConf implements iConf
             foreach ($file_array as $index => $value) {
                 if (preg_match('/^\$name\s*=+/', $value)) {
                     preg_match('/[\'|\"](.*)[\'|\"]/', $value, $name);
-                    $confval['name'] = $name[1];
+                    $confvals['name'] = $name[1];
                 } elseif (preg_match('/^\$hostname\[\]\s*=+/', $value)) {
                     preg_match('/[\'|\"](.*)[\'|\"]/', $value, $hostname);
-                    $confval['hostname'][] = $hostname[1];
+                    $confvals['hostname'][] = $hostname[1];
                 } elseif (preg_match('/^\$sslhostname\[\]\s*=+/', $value)) {
                     preg_match('/[\'|\"](.*)[\'|\"]/', $value, $sslhostname);
-                    $confval['sslhostname'][] = $sslhostname[1];
+                    $confvals['sslhostname'][] = $sslhostname[1];
+                } elseif (preg_match('/^\$checkurl\s*=+/', $value)) {
+                    preg_match('/[\'|\"](.*)[\'|\"]/', $value, $checkurl);
+                    $confvals['checkurl'] = $checkurl[1];
+                } elseif (preg_match('/^\$checkhost\s*=+/', $value)) {
+                    preg_match('/[\'|\"](.*)[\'|\"]/', $value, $checkhost);
+                    $confvals['checkhost'] = $checkhost[1];
                 }
             }
-            return $confval;
+            return $confvals;
         }
     }
 
