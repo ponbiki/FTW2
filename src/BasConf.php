@@ -17,30 +17,43 @@ class BasConf implements iConf
             $file_array = explode(PHP_EOL, $file);
             foreach ($file_array as $index => $value) {
                 if (preg_match('/^\$name\s*=/', $value)) {
-                    preg_match('/[\'|\"](.*)[\'|\"]/', $value, $name);
+                    preg_match('/\=\s*[\'|\"]?(.*?)[\'|\"]?\s*;/', $value, $name);
                     $confvals['name'] = $name[1];
                 } elseif (preg_match('/^\$hostname\[\]\s*=/', $value)) {
-                    preg_match('/[\'|\"](.*)[\'|\"]/', $value, $hostname);
+                    preg_match('/\=\s*[\'|\"]?(.*?)[\'|\"]?\s*;/', $value, $hostname);
                     $confvals['hostname'][] = $hostname[1];
                 } elseif (preg_match('/^\$sslhostname\[\]\s*=/', $value)) {
-                    preg_match('/[\'|\"](.*)[\'|\"]/', $value, $sslhostname);
+                    preg_match('/\=\s*[\'|\"]?(.*?)[\'|\"]?\s*;/', $value, $sslhostname);
                     $confvals['sslhostname'][] = $sslhostname[1];
                 } elseif (preg_match('/^\$checkurl\s*=/', $value)) {
-                    preg_match('/[\'|\"](.*)[\'|\"]/', $value, $checkurl);
+                    preg_match('/\=\s*[\'|\"]?(.*?)[\'|\"]?\s*;/', $value, $checkurl);
                     $confvals['checkurl'] = $checkurl[1];
                 } elseif (preg_match('/^\$checkhost\s*=/', $value)) {
-                    preg_match('/[\'|\"](.*)[\'|\"]/', $value, $checkhost);
+                    preg_match('/\=\s*[\'|\"]?(.*?)[\'|\"]?\s*;/', $value, $checkhost);
                     $confvals['checkhost'] = $checkhost[1];
                 } elseif (preg_match('/^\$backend\[\]\s*=/', $value)) {
-                    preg_match('/ip\s*\=>\s*[\'|\"](.*)[\'|\"]/', $value, $ip);
-                    preg_match('/port\s*\=>\s*(.*?)\s*\,/', $value, $port);
-                    preg_match('/weight\s*\=>\s*(.*?)\s*\,/', $value, $weight);
-                    preg_match('/maxconn\s*\=>\s*(.*?)\s*\)/', $value, $maxconn);
-                    $confvals['backend'][] = [ip => $ip[1], port => $port[1], weight => $weight[1], maxconn => $maxconn[1]];
+                    preg_match('/\(\s*[\'|\"]?ip[\'|\"]?\s*\=>\s*[\'|\"]?(.*?)[\'|\"]?\s*\,/', $value, $ip);
+                    preg_match('/\,\s*[\'|\"]?port[\'|\"]?\s*\=>\s*[\'|\"]?(.*?)[\'|\"]?\s*\,/', $value, $port);
+                    preg_match('/\,\s*[\'|\"]?sport[\'|\"]?\s*\=>\s*[\'|\"]?(.*?)[\'|\"]?\s*\,/', $value, $sport);
+                    preg_match('/\,\s*[\'|\"]?weight[\'|\"]?\s*\=>\s*[\'|\"]?(.*?)[\'|\"]?\s*\,/', $value, $weight);
+                    preg_match('/\,\s*[\'|\"]?maxconn[\'|\"]?\s*\=>\s*[\'|\"]?(.*?)[\'|\"]?\s*\)/', $value, $maxconn);
+                    $confvals['backend'][] = [ip => $ip[1], port => $port[1], sport => $sport[1], weight => $weight[1], maxconn => $maxconn[1]];
                 } elseif (preg_match('/^\$origin\[[\'|\"].*[\'|\"]\]\s*=/', $value)) {
                     preg_match('/\[[\'|\"](.*)[\'|\"]\]/', $value, $origin_id);
-                    preg_match('/=\s*[\'|\"](.*)[\'|\"]/', $value, $server);
+                    preg_match('/\=\s*[\'|\"]?(.*?)[\'|\"]?\s*;/', $value, $server);
                     $confvals['origin'][$origin_id[1]] = $server[1];
+                } elseif (preg_match('/^\$server_to\s*=/', $value)) {
+                    preg_match('/\=\s*[\'|\"]?(.*?)[\'|\"]?\s*;/', $value, $server_to);
+                    $confvals['server_to'] = $server_to[1];
+                } elseif (preg_match('/^\$probe_to\s*=/', $value)) {
+                    preg_match('/\=\s*[\'|\"]?(.*?)[\'|\"]?\s*;/', $value, $probe_to);
+                    $confvals['probe_to'] = $probe_to[1];
+                } elseif (preg_match('/^\$ssd\s*=/', $value)) {
+                    preg_match('/\=\s*[\'|\"]?(.*?)[\'|\"]?\s*;/', $value, $ssd);
+                    $confvals['ssd'] = $ssd[1];
+                } elseif (preg_match('/^\$ddos\s*=/', $value)) {
+                    preg_match('/\=\s*[\'|\"]?(.*?)[\'|\"]?\s*;/', $value, $ddos);
+                    $confvals['ddos'] = $ddos[1];
                 }
             }
             return $confvals;
