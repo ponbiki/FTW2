@@ -31,6 +31,12 @@ class BasConf implements iConf
                 } elseif (preg_match('/^\$checkhost\s*=/', $value)) {
                     preg_match('/[\'|\"](.*)[\'|\"]/', $value, $checkhost);
                     $confvals['checkhost'] = $checkhost[1];
+                } elseif (preg_match('/^\$backend\[\]\s*=/', $value)) {
+                    preg_match('/ip\s*\=>\s*[\'|\"](.*)[\'|\"]/', $value, $ip);
+                    preg_match('/port\s*\=>\s*(.*?)\s*\,/', $value, $port);
+                    preg_match('/weight\s*\=>\s*(.*?)\s*\,/', $value, $weight);
+                    preg_match('/maxconn\s*\=>\s*(.*?)\s*\)/', $value, $maxconn);
+                    $confvals['backend'][] = [ip => $ip[1], port => $port[1], weight => $weight[1], maxconn => $maxconn[1]];
                 } elseif (preg_match('/^\$origin\[[\'|\"].*[\'|\"]\]\s*=/', $value)) {
                     preg_match('/\[[\'|\"](.*)[\'|\"]\]/', $value, $origin_id);
                     preg_match('/=\s*[\'|\"](.*)[\'|\"]/', $value, $server);
