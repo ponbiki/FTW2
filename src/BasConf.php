@@ -19,6 +19,9 @@ class BasConf implements iConf
                 if (preg_match('/^\$name\s*=+/', $value)) {
                     preg_match('/[\'|\"](.*)[\'|\"]/', $value, $name);
                     $confval['name'] = $name[1];
+                } elseif (preg_match('/^\$hostname\[\]\s*=+/', $value)) {
+                    preg_match('/[\'|\"](.*)[\'|\"]/', $value, $hostname);
+                    $confval['hostname'][] = $hostname[1];
                 }
             }
             return $confval;
