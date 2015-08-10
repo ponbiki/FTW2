@@ -37,7 +37,7 @@ class BasConf implements iConf
                     preg_match('/\,\s*[\'|\"]?sport[\'|\"]?\s*\=>\s*[\'|\"]?(.*?)[\'|\"]?\s*\,/', $value, $sport);
                     preg_match('/\,\s*[\'|\"]?weight[\'|\"]?\s*\=>\s*[\'|\"]?(.*?)[\'|\"]?\s*\,/', $value, $weight);
                     preg_match('/\,\s*[\'|\"]?maxconn[\'|\"]?\s*\=>\s*[\'|\"]?(.*?)[\'|\"]?\s*\)/', $value, $maxconn);
-                    $confvals['backend'][] = [ip => $ip[1], port => $port[1], sport => $sport[1], weight => $weight[1], maxconn => $maxconn[1]];
+                    $confvals['backend'][] = ['ip' => $ip[1], 'port' => $port[1], 'sport' => $sport[1], 'weight' => $weight[1], 'maxconn' => $maxconn[1]];
                 } elseif (preg_match('/^\$origin\[[\'|\"].*[\'|\"]\]\s*=/', $value)) {
                     preg_match('/\[[\'|\"](.*)[\'|\"]\]/', $value, $origin_id);
                     preg_match('/\=\s*[\'|\"]?(.*?)[\'|\"]?\s*;/', $value, $server);
@@ -54,6 +54,21 @@ class BasConf implements iConf
                 } elseif (preg_match('/^\$ddos\s*=/', $value)) {
                     preg_match('/\=\s*[\'|\"]?(.*?)[\'|\"]?\s*;/', $value, $ddos);
                     $confvals['ddos'] = $ddos[1];
+                } elseif (preg_match('/^\$limit_error\s*=/', $value)) {
+                    preg_match('/\=\s*[\'|\"]?(.*?)[\'|\"]?\s*;/', $value, $limit_error);
+                    $confvals['limit_error'] = $limit_error[1];
+                } elseif (preg_match('/^\$limit_post\s*=/', $value)) {
+                    preg_match('/\=\s*[\'|\"]?(.*?)[\'|\"]?\s*;/', $value, $limit_post);
+                    $confvals['limit_post'] = $limit_post[1];
+                } elseif (preg_match('/^\$static_ttl\s*=/', $value)) {
+                    preg_match('/\=\s*[\'|\"]?(.*?)[\'|\"]?\s*;/', $value, $static_ttl);
+                    $confvals['static_ttl'] = $static_ttl[1];
+                } elseif (preg_match('/^\$dynamic_ttl\s*=/', $value)) {
+                    preg_match('/\=\s*[\'|\"]?(.*?)[\'|\"]?\s*;/', $value, $dynamic_ttl);
+                    $confvals['dynamic_ttl'] = $dynamic_ttl[1];
+                } elseif (preg_match('/^\$keep\s*=/', $value)) {
+                    preg_match('/\=\s*[\'|\"]?(.*?)[\'|\"]?\s*;/', $value, $keep);
+                    $confvals['keep'] = $keep[1];
                 }
             }
             return $confvals;
