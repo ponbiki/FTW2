@@ -163,7 +163,7 @@ class BasConf implements iConf
 
     public static function writeConf($conf)
     {
-        //;
+        //to do;
     }
 
 }
