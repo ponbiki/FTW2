@@ -60,6 +60,9 @@ class BasConf implements iConf
                 } elseif (preg_match('/^\$limit_post\s*=/', $value)) {
                     preg_match('/\=\s*[\'|\"]?(.*?)[\'|\"]?\s*;/', $value, $limit_post);
                     $confvals['limit_post'] = $limit_post[1];
+                } elseif (preg_match('/^\$varnish_pool\s*=/', $value)) {
+                    preg_match('/\=\s*[\'|\"]?(.*?)[\'|\"]?\s*;/', $value, $varnish_pool);
+                    $confvals['varnish_pool'] = $varnish_pool[1];
                 } elseif (preg_match('/^\$static_ttl\s*=/', $value)) {
                     preg_match('/\=\s*[\'|\"]?(.*?)[\'|\"]?\s*;/', $value, $static_ttl);
                     $confvals['static_ttl'] = $static_ttl[1];
@@ -69,6 +72,18 @@ class BasConf implements iConf
                 } elseif (preg_match('/^\$keep\s*=/', $value)) {
                     preg_match('/\=\s*[\'|\"]?(.*?)[\'|\"]?\s*;/', $value, $keep);
                     $confvals['keep'] = $keep[1];
+                } elseif (preg_match('/^\$use_device_global\s*=/', $value)) {
+                    preg_match('/\=\s*[\'|\"]?(.*?)[\'|\"]?\s*;/', $value, $use_device_global);
+                    $confvals['use_device_global'] = $use_device_global[1];
+                } elseif (preg_match('/^\$use_device\[\]\s*=/', $value)) {
+                    preg_match('/\=\s*[\'|\"]?(.*?)[\'|\"]?\s*;/', $value, $use_device);
+                    $confvals['use_device'][] = $use_device[1];
+                } elseif (preg_match('/^\$zone\s*=/', $value)) {
+                    preg_match('/\=\s*[\'|\"]?(.*?)[\'|\"]?\s*;/', $value, $zone);
+                    $confvals['zone'] = $zone[1];
+                } elseif (preg_match('/^\$pool\s*=/', $value)) {
+                    preg_match('/\=\s*[\'|\"]?(.*?)[\'|\"]?\s*;/', $value, $pool);
+                    $confvals['pool'] = $pool[1];
                 }
             }
             return $confvals;
