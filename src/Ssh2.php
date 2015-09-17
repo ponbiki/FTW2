@@ -2,7 +2,9 @@
 
 namespace ponbiki\FTW;
 
-class Ssh2
+use ponbiki\FTW as ftw;
+
+class Ssh2 implements iSsh2
 {
     private $server =  'blah';
     private $port   =  22;
