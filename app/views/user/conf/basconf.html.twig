@@ -1,0 +1,458 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ page }}{% endblock %}
+{% block head %}
+    {{ parent() }}
+    {% block keywords %}
+        <meta name='keywords' content='FTW, FTW Portal, {{ meta }}'>
+    {% endblock %}
+{% endblock %}
+{% block scripts %}
+    <script type='text/javascript'>
+        $(function() {
+            $( "#accordion" ).accordion({
+                collapsible: true,
+                heightStyle: "content"
+            });
+        });
+        $(function() {
+            $( "#tabs" ).tabs();
+        });
+        $(function() {
+            $( "input[type=submit], a, button" ).button()
+        });
+        $(function() {
+            $( "#radio" ).buttonset();
+        });
+        $(function() {
+            $( "input[type=checkbox], a, button" ).button();
+        });
+        $(function() {
+            $( "#dialog1" ).dialog({
+                autoOpen: false,
+                show: {
+                    effect: "blind",
+                    duration: 1000
+                },
+                hide: {
+                    effect: "fold",
+                    duration: 1000
+                }
+            });
+            $( "#opener1" ).click(function() {
+                $( "#dialog1" ).dialog( "open" );
+            });
+        });
+        $(function() {
+            $( "#dialog2" ).dialog({
+                autoOpen: false,
+                show: {
+                    effect: "blind",
+                    duration: 1000
+                },
+                hide: {
+                    effect: "fold",
+                    duration: 1000
+                }
+            });
+            $( "#opener2" ).click(function() {
+                $( "#dialog2" ).dialog( "open" );
+            });
+        });
+        $(function() {
+            $( "#dialog3" ).dialog({
+                autoOpen: false,
+                show: {
+                    effect: "blind",
+                    duration: 1000
+                },
+                hide: {
+                    effect: "fold",
+                    duration: 1000
+                }
+            });
+            $( "#opener3" ).click(function() {
+                $( "#dialog3" ).dialog( "open" );
+            });
+        });
+        $(function() {
+            $( "#dialog4" ).dialog({
+                autoOpen: false,
+                show: {
+                    effect: "blind",
+                    duration: 1000
+                },
+                hide: {
+                    effect: "fold",
+                    duration: 1000
+                }
+            });
+            $( "#opener4" ).click(function() {
+                $( "#dialog4" ).dialog( "open" );
+            });
+        });
+        $(function() {
+            $( "#dialog5" ).dialog({
+                autoOpen: false,
+                show: {
+                    effect: "blind",
+                    duration: 1000
+                },
+                hide: {
+                    effect: "fold",
+                    duration: 1000
+                }
+            });
+            $( "#opener5" ).click(function() {
+                $( "#dialog5" ).dialog( "open" );
+            });
+        });
+        $(function() {
+            $( "#dialog6" ).dialog({
+                autoOpen: false,
+                show: {
+                    effect: "blind",
+                    duration: 1000
+                },
+                hide: {
+                    effect: "fold",
+                    duration: 1000
+                }
+            });
+            $( "#opener6" ).click(function() {
+                $( "#dialog6" ).dialog( "open" );
+            });
+        });
+        $(document).ready(function() {
+            setTimeout(function() {
+                $( ".notify" ).fadeOut(1000, function () {
+                    $( ".notify" ).css({"visibility":"hidden",display:"block"}).slideUp();
+                });
+            }, 3500);
+        });
+    </script>
+{% endblock %}
+{% block content %}
+    <div id="tabs">
+        <ul>
+            <li><a href="#tabs-dom" title="Manage Domains">Manage Domains</a></li>
+            <li><a href="#tabs-purge" title="Clear Cache">Clear Cache</a></li>
+            <li><a href="#tabs-err" title="Pretty Error Pages">Error Pages</a></li>
+            <li><a href="#tabs-cookie" title="Cookie Exceptions">Cookie Exceptions</a></li>
+        </ul>
+        <div id="tabs-dom">
+            <div id="accordion">
+                <h3 title="Add Domains">Add Domains</h3>
+                <div id="add">
+                    <form method='post' action='confedit.php'>
+                        <table>
+                            <tr title="New Domain">
+                                <td style="float:left;padding-top:.75em;padding-right:.75em;">
+                                    Add Domain: 
+                                </td>
+                                <td style="float:right;">
+                                    <input type='text' maxlength='253' name='newhost' placeholder="Enter New Domain Name" />
+                                </td>
+                            </tr>
+                            <tr title="Add Domain">
+                                <td style="float:left;padding-top:.75em;">
+                                    <div id="dialog2" title="Tip">
+                                        <p>Multiple whitespace separated domains may be added at the same time (e.g. spaces, tabs, newlines, etc.).</p>
+                                    </div>
+                                    <a id="opener2" class="ui-state-default ui-corner-all tip" title="Add Domain Help" style="width:19px;height:19px;padding:0px;margin:0px;font-size:1pt;">
+                                        <span class="ui-icon ui-icon-help"></span>
+                                    </a>
+                                </td>
+                                <td style="float:right;">
+                                    <input type="submit" value="Add" />
+                                </td>
+                            </tr>
+                        </table>
+                        <input type='hidden' name='formid' value='addform' />
+                    </form>
+                </div>
+                <h3 title="Delete Domains">Delete Domains</h3>
+                <div id="del">
+                    <form method='post' action='confedit.php'>
+                        <table>
+    <?php
+    $x =0;
+    foreach ($domains as $domain) {
+        $check = "check" .++$x;
+    ?>
+                            <tr title='<?=$domain?>'>
+                                <td style="float:left;">
+                                    <input type="checkbox" id="<?=$check?>" name="deldomain[]" value="<?=$domain?>"/>
+                                    <label for="<?=$check?>">
+                                        <?=$domain?>
+                                    </label>
+                                </td><td></td>
+                            </tr>
+     <?php
+    }
+        ?>
+                            <tr><td></td><td></td></tr>
+                            <tr><td></td><td></td></tr>
+                            <tr><td></td><td></td></tr>
+                            <tr><td></td><td></td></tr>
+                            <tr title='Remove Domain'>
+                                <td>
+                                    <div id="dialog3" title="Tip">
+                                        <p>Select one or more domains to remove from FTW services.</p>
+                                    </div>
+                                    <a id="opener3" class="ui-state-default ui-corner-all tip" title="Add Domain Help" style="width:19px;height:19px;padding:0px;margin:0px;font-size:1pt;">
+                                        <span class="ui-icon ui-icon-help"></span>
+                                    </a>
+                                </td>
+                                <td style="float:right;">
+                                    <input type="submit" value="Remove" />
+                                </td>
+                            </tr>
+                        </table>
+                            <input type='hidden' name='formid' value='delform' />
+                    </form>
+                </div>
+                <h3 title="Add SSL Domains">Add SSL Domains</h3>
+                <div id="ssladd">
+                    <form method="post" action="confedit.php" enctype="multipart/form-data">
+                        <table>
+                            <tr title="Add SSL Domain">
+                                <td>
+                                    <label>
+                                        <span style="float:left;">
+                                            Add SSL Domain: 
+                                        </span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <span style="float:right;">
+                                            <input type='text' maxlength='253' name='ssldomain' value="" placeholder="Enter SSL Domain"/>
+                                        </span>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr title="Add PEM">
+                                <td>
+                                    <label>
+                                        <span style="float:left;">
+                                            Paste PEM: 
+                                        </span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <span style="float:right;">
+                                            <textarea cols="25" rows="10" name="pem" placeholder="Please Paste Your PEM Here"></textarea>
+                                        </span>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr title="Add SSL Domain">
+                                <td>
+                                    <div id="dialog1" title="Tip">
+                                        <p>Enter a domain name to be handled via HTTPS in the first field, and paste your SSL PEM file in the second field.</p>
+                                    </div>
+                                    <a id="opener1" class="ui-state-default ui-corner-all tip" title="Add Domain Help" style="width:19px;height:19px;padding:0px;margin:0px;font-size:1pt;">
+                                        <span class="ui-icon ui-icon-help"></span>
+                                    </a>
+                                </td>
+                                <td>
+                                    <label>
+                                        <span style="float:right;">
+                                            <input type="submit" value="Submit" />
+                                        </span>
+                                    </label>
+                                </td>
+                            </tr>
+                        </table>
+                        <input type="hidden" name="formid" value="sslform" />
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="tabs-cookie">
+            <form method="post" action="confedit.php">
+                <table>
+                    <tr title="Pass Cookie">
+                        <td>
+                            <label>
+                                <span style="float:left;font-weight:bold;">
+                                     Pass Cookie
+                                </span>
+                            </label>
+                        </td>
+                        <td>
+                            <label>
+                                <span style="float:right;">
+                                    &nbsp;
+                                </span>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr title="Cookie Name">
+                        <td>
+                            <label>
+                                <span style="float:left;">
+                                    Cookie Name: 
+                                </span>
+                            </label>
+                        </td>
+                        <td>
+                            <label>
+                                <span style="float:right;">
+                                    <input type='text' maxlength='253' name='cookiename' value="" placeholder="Enter a Cookie Name"/>
+                                </span>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr title="Cookie Path">
+                        <td>
+                            <label>
+                                <span style="float:left;">
+                                   Path: 
+                                </span>
+                            </label>
+                        </td>
+                        <td>
+                            <label>
+                                <span style="float:right;">
+                                    <input type='text' maxlength='253' name='cookiepath' value="" placeholder="Enter the Directory Path"/>
+                                </span>
+                            </label>
+                        </td>
+                    </tr>
+                    <!--<tr title="Cookie Domain">
+                        <td>
+                            <label>
+                                <span style="float:left;">
+                                    Domain: 
+                                </span>
+                            </label>
+                        </td>
+                        <td>
+                            <label>
+                                <span style="float:right;">
+                                    <input type='text' maxlength='253' name='cookiedomain' value="" placeholder="Enter the Domain or Subdomain"/>
+                                </span>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr title="Other Info">
+                        <td>
+                            <label>
+                                <span style="float:left;">
+                                    Other Info: 
+                                </span>
+                            </label>
+                        </td>
+                        <td>
+                            <label>
+                                <span style="float:right;">
+                                    <input type='text' maxlength='253' name='cookieinfo' value="" placeholder="Enter Any Extra Information"/>
+                                </span>
+                            </label>
+                        </td>
+                    </tr>-->
+                    <tr title="Request">
+                        <td>
+                            <div id="dialog6" title="Tip">
+                                <p>For cookies that shouldn't be cached, specify a cookie name and path (e.g. wordpress_test_cookie and /wordpress/.</p>
+                            </div>
+                            <a id="opener6" class="ui-state-default ui-corner-all tip" title="Add Domain Help" style="width:19px;height:19px;padding:0px;margin:0px;font-size:1pt;">
+                                <span class="ui-icon ui-icon-help"></span>
+                            </a>
+                        </td>
+                        <td>
+                            <label>
+                                <span style='float:right;'>
+                                    <input type="submit" value="Request" />
+                                </span>
+                            </label>
+                        </td>
+                    </tr>
+                </table>
+                <input type='hidden' name='formid' value='exceptform' />
+            </form>
+        </div>
+        <div id="tabs-purge">
+            <form method='post' action='confedit.php'>
+                <table>
+    <?php
+    $y = 1000;
+    foreach ($domains as $domain) {
+        $check2 = "check" .++$y;
+    ?>
+                    <tr title="<?=$domain?>">
+                        <td style="float:left;">
+                            <input type="checkbox" id="<?=$check2?>" name="purgecache[]" value="<?=$domain?>" />
+                            <label for="<?=$check2?>">
+                                <?php echo $domain ?>
+                            </label>
+                        </td><td></td>
+                    </tr>
+     <?php
+    }
+    ?>
+                    <tr><td></td><td></td></tr>
+                    <tr><td></td><td></td></tr>
+                    <tr><td></td><td></td></tr>
+                    <tr><td></td><td></td></tr>
+                    <tr title="Purge Cache">
+                        <td>
+                            <div id="dialog4" title="Tip">
+                                <p>Select one or more domains that will have their cache cleared.</p>
+                            </div>
+                            <a id="opener4" class="ui-state-default ui-corner-all tip" title="Add Domain Help" style="width:19px;height:19px;padding:0px;margin:0px;font-size:1pt;">
+                                <span class="ui-icon ui-icon-help"></span>
+                            </a>
+                        </td>
+                        <td style="float:right;">
+                            <input type="submit" value="Purge" />
+                        </td>
+                    </tr>
+                </table>
+                <input type='hidden' name='formid' value='purgeform' />
+            </form>
+        </div>
+        <div id="tabs-err">
+            <form method="post" action="confedit.php">
+                <table>
+                    <tr title="Error Pages Select">
+                        <td>
+                            <span style="float:left;">
+                                Pretty Error Pages: 
+                            </span>
+                        </td>
+                        <td>
+                            <div id="radio" style="float:right;">
+                                <input type="radio" id="radio1" name="errpg" title="On" value="1" <?=$ckon?>>
+                                <label for="radio1">On</label>
+                                <input type="radio" id="radio2" name="errpg" title="Off" value="0" <?=$ckoff?>>
+                                <label for="radio2">Off</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr title="Set Error Pages">
+                        <td style="float:left;padding-top:.75em;">
+                            <div id="dialog5" title="Tip">
+                                <p>Set Pretty Error Pages to On to enable descriptive HTTP Error Code pages.</p>
+                            </div>
+                            <a id="opener5" class="ui-state-default ui-corner-all tip" title="Add Domain Help" style="width:19px;height:19px;padding:0px;margin:0px;font-size:1pt;">
+                                <span class="ui-icon ui-icon-help"></span>
+                            </a>
+                        </td>
+                        <td>
+                            <label>
+                                <span style='float:right;'>
+                                    <input type="submit" value="Set" />
+                                </span>
+                            </label>
+                        </td>
+                    </tr>
+                </table>
+                <input type="hidden" name="formid" value="errform" />
+            </form>
+        </div>
+    </div>
+{% endblock %}
