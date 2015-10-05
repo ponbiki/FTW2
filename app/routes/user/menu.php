@@ -10,7 +10,7 @@ $app->get('/user/menu', function() use ($app) {
         $app->redirect('/');
     }
 
-    echo "<pre>";print_r($_SESSION);echo "</pre>";
+    echo "<pre>";print_r($_SESSION);echo "</pre>"; //debugging tool
 
     $con = new ftw\Database();
     $con->confAvail();

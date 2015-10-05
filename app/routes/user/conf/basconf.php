@@ -10,13 +10,8 @@ $app->get('/user/conf/basconf', function() use ($app) {
         $app->redirect('/');
     }
 
-    echo "<pre>";print_r($_SESSION);echo "</pre>";
-
-    $con = new ftw\Database();
-    $con->confAvail();
     $page = "Configuration Edit";
     $meta = "Configuration Edit";
-    $user[] = $_SESSION['user'];
 
     $app->render('user/conf/basconf.html.twig', [
         'page' => $page,
@@ -24,8 +19,7 @@ $app->get('/user/conf/basconf', function() use ($app) {
         'loggedin' => $_SESSION['loggedin'],
         'error' => $_SESSION['error'],
         'info' => $_SESSION['info'],
-        'confs' => $_SESSION['confs'],
-        'user' => $user
+        
     ]);
 
     ftw\Session::clear();
