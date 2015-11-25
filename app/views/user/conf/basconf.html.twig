@@ -175,22 +175,18 @@
                 <div id="del">
                     <form method='post' action='confedit.php'>
                         <table>
-    <?php
-    $x =0;
-    foreach ($domains as $domain) {
-        $check = "check" .++$x;
-    ?>
-                            <tr title='<?=$domain?>'>
+                            {% set x = 0 %}
+                            {% for domain in domains %}
+                                {% set x = x + 1 %}
+                            <tr title='{{ domain }}'>
                                 <td style="float:left;">
-                                    <input type="checkbox" id="<?=$check?>" name="deldomain[]" value="<?=$domain?>"/>
-                                    <label for="<?=$check?>">
-                                        <?=$domain?>
+                                    <input type="checkbox" id="{{ "check#{x}" }}" name="deldomain[]" value="{{ domain }}"/>
+                                    <label for="{{ "check#{x}" }}">
+                                        {{ domain }}
                                     </label>
                                 </td><td></td>
                             </tr>
-     <?php
-    }
-        ?>
+                            {% endfor %}
                             <tr><td></td><td></td></tr>
                             <tr><td></td><td></td></tr>
                             <tr><td></td><td></td></tr>
