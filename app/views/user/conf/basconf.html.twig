@@ -175,18 +175,19 @@
                 <div id="del">
                     <form method='post' action='confedit.php'>
                         <table>
-                            {% set x = 0 %}
-                            {% for domain in domains %}
-                                {% set x = x + 1 %}
+    {% set x = 0 %}
+    {% for domain in domains %}
+        {% set x = x + 1 %}
+        {% set check = "check" ~ x %}
                             <tr title='{{ domain }}'>
                                 <td style="float:left;">
-                                    <input type="checkbox" id="{{ "check#{x}" }}" name="deldomain[]" value="{{ domain }}"/>
-                                    <label for="{{ "check#{x}" }}">
+                                    <input type="checkbox" id="{{ check }}" name="deldomain[]" value="{{ domain }}"/>
+                                    <label for="{{ check }}">
                                         {{ domain }}
                                     </label>
                                 </td><td></td>
                             </tr>
-                            {% endfor %}
+    {% endfor %}
                             <tr><td></td><td></td></tr>
                             <tr><td></td><td></td></tr>
                             <tr><td></td><td></td></tr>
@@ -374,22 +375,19 @@
         <div id="tabs-purge">
             <form method='post' action='confedit.php'>
                 <table>
-    <?php
-    $y = 1000;
-    foreach ($domains as $domain) {
-        $check2 = "check" .++$y;
-    ?>
-                    <tr title="<?=$domain?>">
+    {% set y = 0 %}
+    {% for domain in domains %}
+        {% set y = y + 1 %}
+        {% set check2 = "check2" ~ y %}
+                    <tr title="{{ domain }}">
                         <td style="float:left;">
-                            <input type="checkbox" id="<?=$check2?>" name="purgecache[]" value="<?=$domain?>" />
-                            <label for="<?=$check2?>">
-                                <?php echo $domain ?>
+                            <input type="checkbox" id="{{ check2 }}}" name="purgecache[]" value="{{ domain }}" />
+                            <label for="{{ check2 }}">
+                                {{ domain }}
                             </label>
                         </td><td></td>
                     </tr>
-     <?php
-    }
-    ?>
+    {% endfor %}
                     <tr><td></td><td></td></tr>
                     <tr><td></td><td></td></tr>
                     <tr><td></td><td></td></tr>
@@ -422,9 +420,9 @@
                         </td>
                         <td>
                             <div id="radio" style="float:right;">
-                                <input type="radio" id="radio1" name="errpg" title="On" value="1" <?=$ckon?>>
+                                <input type="radio" id="radio1" name="errpg" title="On" value="1" {{ ckon }}>
                                 <label for="radio1">On</label>
-                                <input type="radio" id="radio2" name="errpg" title="Off" value="0" <?=$ckoff?>>
+                                <input type="radio" id="radio2" name="errpg" title="Off" value="0" {{ ckoff }}>
                                 <label for="radio2">Off</label>
                             </div>
                         </td>
