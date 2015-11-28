@@ -144,7 +144,7 @@
             <div id="accordion">
                 <h3 title="Add Domains">Add Domains</h3>
                 <div id="add">
-                    <form method='post' action='confedit.php'>
+                    <form method='post' action='/user/conf/adddom'>
                         <table>
                             <tr title="New Domain">
                                 <td style="float:left;padding-top:.75em;padding-right:.75em;">
@@ -173,7 +173,7 @@
                 </div>
                 <h3 title="Delete Domains">Delete Domains</h3>
                 <div id="del">
-                    <form method='post' action='confedit.php'>
+                    <form method='post' action='/user/conf/deldom'>
                         <table>
     {% set x = 0 %}
     {% for domain in domains %}
@@ -211,7 +211,7 @@
                 </div>
                 <h3 title="Add SSL Domains">Add SSL Domains</h3>
                 <div id="ssladd">
-                    <form method="post" action="confedit.php" enctype="multipart/form-data">
+                    <form method="post" action="/user/conf/addssl" enctype="multipart/form-data">
                         <table>
                             <tr title="Add SSL Domain">
                                 <td>
@@ -269,7 +269,7 @@
             </div>
         </div>
         <div id="tabs-cookie">
-            <form method="post" action="confedit.php">
+            <form method="post" action="/user/conf/passcook">
                 <table>
                     <tr title="Pass Cookie">
                         <td>
@@ -319,38 +319,6 @@
                             </label>
                         </td>
                     </tr>
-                    <!--<tr title="Cookie Domain">
-                        <td>
-                            <label>
-                                <span style="float:left;">
-                                    Domain: 
-                                </span>
-                            </label>
-                        </td>
-                        <td>
-                            <label>
-                                <span style="float:right;">
-                                    <input type='text' maxlength='253' name='cookiedomain' value="" placeholder="Enter the Domain or Subdomain"/>
-                                </span>
-                            </label>
-                        </td>
-                    </tr>
-                    <tr title="Other Info">
-                        <td>
-                            <label>
-                                <span style="float:left;">
-                                    Other Info: 
-                                </span>
-                            </label>
-                        </td>
-                        <td>
-                            <label>
-                                <span style="float:right;">
-                                    <input type='text' maxlength='253' name='cookieinfo' value="" placeholder="Enter Any Extra Information"/>
-                                </span>
-                            </label>
-                        </td>
-                    </tr>-->
                     <tr title="Request">
                         <td>
                             <div id="dialog6" title="Tip">
@@ -373,7 +341,7 @@
             </form>
         </div>
         <div id="tabs-purge">
-            <form method='post' action='confedit.php'>
+            <form method='post' action='/user/conf/purge'>
                 <table>
     {% set y = 0 %}
     {% for domain in domains %}
@@ -410,7 +378,7 @@
             </form>
         </div>
         <div id="tabs-err">
-            <form method="post" action="confedit.php">
+            <form method="post" action="/user/conf/errpg">
                 <table>
                     <tr title="Error Pages Select">
                         <td>
