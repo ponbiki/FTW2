@@ -160,6 +160,10 @@ class BasConf implements iConf
             return $confvals;
         }
     }
+    
+    public static function jsonConfLoader() {
+        return json_encode($_SESSION['conf']);
+    }
 
     public static function writeConf($conf)
     {
