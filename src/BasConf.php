@@ -162,7 +162,7 @@ class BasConf implements iConf
     }
     
     public static function jsonConfLoader() {
-        return json_encode($_SESSION['conf']);
+        return \json_encode($_SESSION[$_SESSION['confselected']]);
     }
 
     public static function writeConf($conf)
