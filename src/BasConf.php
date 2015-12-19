@@ -15,7 +15,7 @@ class BasConf implements iConf
             $con = new ftw\Database();
             $con->confBackup($conf, $file);
             $file_array = explode(PHP_EOL, $file);
-            foreach ($file_array as $index => $value) {
+            foreach ($file_array as $value) {
                 if (\preg_match('/^\$name\s*=/', $value)) {
                     \preg_match('/=\s*[\'"]?(.*?)[\'"]?\s*;/', $value, $name);
                     $confvals['name'] = $name[1];
