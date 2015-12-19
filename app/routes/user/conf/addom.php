@@ -15,7 +15,9 @@ $app->post('/user/conf/addom', function () use ($app) {
     $doms = ftw\BasConf::splitHosts($doms_in);
     
     foreach ($doms as $dom) {
-        if (in_array($dom, $_SESSION[$_SESSION['confselected']]['hostname'])) {
+        if (empty($dom)) {
+            $_SESSION['error'][] = "No domains were entered!";
+        } elseif (in_array($dom, $_SESSION[$_SESSION['confselected']]['hostname'])) {
             $_SESSION['error'][] = "$dom is already being accelerated by FTW!";
         } elseif (ftw\BasConf::hostValidator($dom) === FALSE) {
             $_SESSION['error'][] = "$dom is an invalid domain format!";
