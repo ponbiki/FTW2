@@ -10,10 +10,18 @@ $app->post('/user/conf/addom', function () use ($app) {
         $app->redirect('/');
     }
     
-    $new_dom = \filter_var(($app->request()->post('newhost')), FILTER_SANITIZE_STRING);
+    $doms_in = \filter_var(($app->request()->post('newhost')), FILTER_SANITIZE_STRING);
     
-    if (!in_array($new_dom, $_SESSION[$_SESSION['confselected']]['hostname'])) {
-        $_SESSION['error'][] = "This domain is already added";
+    $doms = ftw\BasConf::splitHosts($doms_in);
+    
+    foreach ($doms as $dom) {
+        if (in_array($dom, $_SESSION[$_SESSION['confselected']]['hostname'])) {
+            $_SESSION['error'][] = "$dom is already being accelerated by FTW!";
+        } elseif (ftw\BasConf::hostValidator($dom) === FALSE) {
+            $_SESSION['error'][] = "$dom is an invalid domain format!";
+        } else {
+            $_SESSION['info'][] = "$dom has been added to FTW!";
+        }
     }
     
     $app->redirect('/user/conf/basconf');

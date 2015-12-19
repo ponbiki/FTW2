@@ -6,5 +6,7 @@ interface iConf
 {
     public static function loadConf($conf);
     public static function jsonConfLoader();
+    public static function splitHosts($hosts);
+    public static function hostValidator($host);
     public static function writeConf($conf);
 }

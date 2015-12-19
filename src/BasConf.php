@@ -164,6 +164,20 @@ class BasConf implements iConf
     public static function jsonConfLoader() {
         return \json_encode($_SESSION[$_SESSION['confselected']]);
     }
+    
+    public static function splitHosts($hosts) {
+        $splitter = '/\s+/';
+        return \preg_split($splitter, $hosts);
+    }
+    
+    public static function hostValidator($host) {
+        $host_validate = '/([0-9a-z-]+\.)?[0-9a-z-]+\.[a-z]{2,7}/';
+        if (!\preg_match($host_validate, $host)) {
+            return \FALSE;
+        } else {
+            return \TRUE;
+        }
+    }
 
     public static function writeConf($conf)
     {
