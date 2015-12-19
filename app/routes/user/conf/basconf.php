@@ -12,11 +12,13 @@ $app->get('/user/conf/basconf', function() use ($app) {
 
     $page = "Configuration Edit";
     $meta = "Configuration Edit";
-
+    $domains = $_SESSION[$_SESSION['confselected']]['hostname'];
+            
     $app->render('user/conf/basconf.html.twig', [
         'page' => $page,
         'meta' => $meta,
         'loggedin' => $_SESSION['loggedin'],
+        'domains' => $domains,
         'error' => $_SESSION['error'],
         'info' => $_SESSION['info'],
         

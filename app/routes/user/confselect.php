@@ -10,7 +10,7 @@ $app->post('/user/confselect', function () use ($app) {
         $app->redirect('/');
     }
 
-    $conf = filter_var(($app->request()->post('conf')), FILTER_SANITIZE_STRING);
+    $conf = \filter_var(($app->request()->post('conf')), FILTER_SANITIZE_STRING);
 
     if (!in_array($conf, $_SESSION['confs'])) {
         $_SESSION['error'][] = "Please select a valid configuration file";
