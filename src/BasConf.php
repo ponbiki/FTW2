@@ -183,8 +183,8 @@ class BasConf implements iConf
         }
     }
     
-    public function addDomains($conf, $domains) {
-        $conf . $domains;
+    public function addDomain($domain) {
+        $this->confvals['hostname'][] = $domain;
     }
     
     protected function updateConf($conf) {

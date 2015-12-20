@@ -10,6 +10,6 @@ interface iConf
     public static function jsonConfLoader();
     public static function splitHosts($hosts);
     public static function hostValidator($host);
-    public function addDomains($conf, $domains);
+    public function addDomain($conf, $domain);
     public static function writeConf($conf);
 }
