@@ -20,7 +20,7 @@ $app->post('/user/conf/addom', function () use ($app) {
         } elseif (ftw\BasConf::hostValidator($dom) === FALSE) {
             $_SESSION['error'][] = "$dom is an invalid domain format!";
         } else {
-            
+            $_SESSION['conf']->addDomain($dom);
             $_SESSION['info'][] = "$dom has been added to FTW!";
         }
     }
