@@ -22,10 +22,14 @@ $app->post('/user/confselect', function () use ($app) {
     }
 
     if ($_SESSION['conftype'][$conf] === 'bas') {
-        $file_array = ftw\BasConf::loadConf($conf);
         $_SESSION['confselected'] = $conf;
-        $_SESSION[$conf] = $file_array;
-        $app->redirect('/user/menu/conf/basconf');
+        $_SESSION['conf'] = new ftw\BasConf($conf);
+        /*
+        *$file_array = ftw\BasConf::loadConf($conf);
+        *$_SESSION['confselected'] = $conf;
+        *$_SESSION[$conf] = $file_array;
+        */
+        $app->redirect('/user/conf/basconf');
     } elseif ($_SESSION['conftype'][$conf] === 'adv') {
         //some stuff;
     }

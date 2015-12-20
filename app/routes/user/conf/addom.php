@@ -17,7 +17,7 @@ $app->post('/user/conf/addom', function () use ($app) {
     foreach ($doms as $dom) {
         if (empty($dom)) {
             $_SESSION['error'][] = "No domains were entered!";
-        } elseif (in_array($dom, $_SESSION[$_SESSION['confselected']]['hostname'])) {
+        } elseif (in_array($dom, $_SESSION['conf']->confvals['hostname'])) {
             $_SESSION['error'][] = "$dom is already being accelerated by FTW!";
         } elseif (ftw\BasConf::hostValidator($dom) === FALSE) {
             $_SESSION['error'][] = "$dom is an invalid domain format!";

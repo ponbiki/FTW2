@@ -2,8 +2,6 @@
 
 use ponbiki\FTW as ftw;
 
-new ftw\Session();
-
 $app->get('/user/conf/basconf', function() use ($app) {
 
     if ($_SESSION['loggedin'] !== TRUE) {
@@ -12,7 +10,7 @@ $app->get('/user/conf/basconf', function() use ($app) {
 
     $page = "Configuration Edit";
     $meta = "Configuration Edit";
-    $domains = $_SESSION[$_SESSION['confselected']]['hostname'];
+    $domains = $_SESSION['conf']->confvals['hostname'];
             
     $app->render('user/conf/basconf.html.twig', [
         'page' => $page,
