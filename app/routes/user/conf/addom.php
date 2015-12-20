@@ -2,8 +2,6 @@
 
 use ponbiki\FTW as ftw;
 
-new ftw\Session();
-
 $app->post('/user/conf/addom', function () use ($app) {
     
     if ($_SESSION['loggedin'] !== TRUE) {
@@ -22,6 +20,7 @@ $app->post('/user/conf/addom', function () use ($app) {
         } elseif (ftw\BasConf::hostValidator($dom) === FALSE) {
             $_SESSION['error'][] = "$dom is an invalid domain format!";
         } else {
+            
             $_SESSION['info'][] = "$dom has been added to FTW!";
         }
     }

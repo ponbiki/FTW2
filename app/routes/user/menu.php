@@ -2,8 +2,6 @@
 
 use ponbiki\FTW as ftw;
 
-new ftw\Session();
-
 $app->get('/user/menu', function() use ($app) {
 
     if ($_SESSION['loggedin'] !== TRUE) {

@@ -7,6 +7,7 @@ use ponbiki\FTW as ftw;
 class BasConf implements iConf
 {
     public function __construct($conf) {
+        $this->confselected = $conf;
         return $this->loadConf($conf);
     }
 
