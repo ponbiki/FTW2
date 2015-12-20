@@ -6,7 +6,8 @@ use ponbiki\FTW as ftw;
 
 class BasConf implements iConf
 {
-    public function __construct($conf) {
+    public function __construct($conf)
+    {
         $this->confselected = $conf;
         return $this->loadConf($conf);
     }
@@ -165,7 +166,8 @@ class BasConf implements iConf
         }
     }
     
-    public static function jsonConfLoader() {
+    public static function jsonConfLoader() 
+    {
         return \json_encode($_SESSION[$_SESSION['confselected']]);
     }
     
@@ -174,7 +176,8 @@ class BasConf implements iConf
         return \preg_split($splitter, $hosts);
     }
     
-    public static function hostValidator($host) {
+    public static function hostValidator($host)
+    {
         $host_validate = '/([0-9a-z-]+\.)?[0-9a-z-]+\.[a-z]{2,7}/';
         if (!\preg_match($host_validate, $host)) {
             return \FALSE;
@@ -183,14 +186,16 @@ class BasConf implements iConf
         }
     }
     
-    public function addDomain($domain) {
+    public function addDomain($domain)
+    {
         $this->confvals['hostname'][] = $domain;
     }
     
-    protected function updateConf($conf) {
-        return $conf;
+    public function delDomain($domain)
+    {
+        unset($_SESSION['conf']->confvals['hostname'][\array_search($domain, $_SESSION['conf']->confvals['hostname'])]);
     }
-
+    
     public static function writeConf($conf)
     {
         if (!\unlink(iConf::tmp_path . $conf)) {
