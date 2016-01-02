@@ -9,6 +9,7 @@ class BasConf implements iConf
     public function __construct($conf)
     {
         $this->confselected = $conf;
+        $this->unsaved = \FALSE;
         return $this->loadConf($conf);
     }
 
@@ -189,13 +190,13 @@ class BasConf implements iConf
     public function addDomain($domain)
     {
         $this->confvals['hostname'][] = $domain;
-        $this->confvals['changed'] = \TRUE;
+        $this->unsaved = \TRUE;
     }
     
     public function delDomain($domain)
     {
         unset($_SESSION['conf']->confvals['hostname'][\array_search($domain, $_SESSION['conf']->confvals['hostname'])]);
-        $this->confvals['changed'] = \TRUE;
+        $this->unsaved = \TRUE;
     }
     
     public static function writeConf($conf)

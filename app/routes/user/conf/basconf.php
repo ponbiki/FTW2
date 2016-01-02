@@ -11,6 +11,7 @@ $app->get('/user/conf/basconf', function() use ($app) {
     $page = "Configuration Edit";
     $meta = "Configuration Edit";
     $domains = $_SESSION['conf']->confvals['hostname'];
+    $unsaved = $_SESSION['conf']->unsaved;
             
     $app->render('user/conf/basconf.html.twig', [
         'page' => $page,
@@ -19,7 +20,7 @@ $app->get('/user/conf/basconf', function() use ($app) {
         'domains' => $domains,
         'error' => $_SESSION['error'],
         'info' => $_SESSION['info'],
-        'unsaved' => $_SESSION['conf']['unsaved']
+        'unsaved' => $unsaved
     ]);
 
     ftw\Session::clear();
