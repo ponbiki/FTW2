@@ -19,7 +19,7 @@ $app->get('/user/conf/basconf', function() use ($app) {
         'domains' => $domains,
         'error' => $_SESSION['error'],
         'info' => $_SESSION['info'],
-        
+        'unsaved' => $_SESSION['conf']['unsaved']
     ]);
 
     ftw\Session::clear();
