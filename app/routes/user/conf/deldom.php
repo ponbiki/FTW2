@@ -1,6 +1,6 @@
 <?php
 
-use ponbiki\FTW as ftw;
+//use ponbiki\FTW as ftw;
 
 $app->post('/user/conf/deldom', function () use ($app) {
     

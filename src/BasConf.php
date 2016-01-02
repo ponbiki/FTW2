@@ -204,5 +204,4 @@ class BasConf implements iConf
             $conf_string = $this->stringConf($conf);
         }
     }
-
 }
