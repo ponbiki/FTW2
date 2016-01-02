@@ -6,6 +6,11 @@ use ponbiki\FTW as ftw;
 
 class BasConf implements iConf
 {
+    
+    public $confselected;
+    public $confvals;
+    public $unsaved;
+    
     public function __construct($conf)
     {
         $this->confselected = $conf;

@@ -22,7 +22,7 @@ $app->post('/user/conf/deldom', function () use ($app) {
 
     foreach ($doms_out as $dom) {
         if (!in_array($dom, $_SESSION['conf']->confvals['hostname'])) {
-            $_SESSION['error'][] = "$dom was is no an accelerated domain, and cannot be deleted!";
+            $_SESSION['error'][] = "$dom is not an accelerated domain, and cannot be deleted!";
         } else {
             $_SESSION['conf']->delDomain($dom);
             $_SESSION['info'][] = "Domain $dom has been removed!";
