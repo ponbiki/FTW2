@@ -43,6 +43,9 @@
                     <div class='navbar'>
                         <a href='/user/menu' title='Menu'>Menu</a>
                         <a href='/logout' title='Logout'>Logout</a>
+                    {% if unsaved %}
+                        <a href='/user/conf/save' title='Save Changes'>Save Changes</a>
+                    {% endif %}
                     </div>
                 {% elseif admin %}
                     <div class='navbar'>
