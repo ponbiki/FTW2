@@ -280,7 +280,13 @@ class BasConf implements iConf
             if ($this->confvals['pool']) {
                 $conf_string .= "\$pool='{$this->confvals['pool']}';\n";
             }
+            if ($this->confvals['disabled']) {
+                foreach ($this->confvals['disabled'] as $keyed => $valued) {
+                    $conf_string .= "//\$$keyed='$valued';\n";
+                }
+            }
             $conf_string .= "?>";
+                        
         }
     }
 }
