@@ -6,6 +6,7 @@ $app->get('/user/conf/save', function () use ($app) {
         $app->redirect('/');
     }
     
+    $_SESSION['conf']->writeConf($_SESSION['conf']->confselected);
     $_SESSION['conf']->unsaved = \FALSE;
     $_SESSION['info'][] = "Configuration has been saved!";
     
