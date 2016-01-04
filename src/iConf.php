@@ -12,5 +12,5 @@ interface iConf
     public static function hostValidator($host);
     public function addDomain($domain);
     public function delDomain($domain);
-    public static function writeConf($conf);
+    public function writeConf($conf);
 }
