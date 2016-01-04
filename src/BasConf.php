@@ -209,7 +209,78 @@ class BasConf implements iConf
         if (!\unlink(iConf::tmp_path . $conf)) {
             throw new \Exception("There was an issue removing the existing working copy of $conf");
         } else {
-            $conf_string = $this->stringConf($conf);
+            $conf_string = "<?php\n";
+            if ($this->confvals['name']) {
+                $conf_string .= "\$name='{$this->confvals['name']}';\n";
+            }
+            if ($this->confvals['hostname']) {
+                foreach ($this->confvals['hostname'] as $host) {
+                    $conf_string .= "\$hostname[]='$host';\n";
+                }
+            }
+            if ($this->confvals['checkurl']) {
+                $conf_string .= "\$checkurl='{$this->confvals['checkurl']}';\n";
+            }
+            if ($this->confvals['checkhost']) {
+                $conf_string .= "\$checkhost='{$this->confvals['checkhost']}';\n";
+            }
+            if ($this->confvals['backend']) {
+                foreach ($this->confvals['backend'] as $back) {
+                    $conf_string .= "\$backend[]=array('ip' => '{$back['ip']}', 'port' => '{$back['port']}',"
+                    . " 'sport' => '{$back['sport']}', 'weight' => '{$back['weight']}',"
+                    . " 'maxconn' => '{$back['maxconn']}');\n";
+                }
+            }
+            if ($this->confvals['origin']) {
+                foreach ($this-confvals[origin] as $key => $value) {
+                    $conf_string .= "\$origin['$key']='$value';\n";
+                }
+            }
+            if ($this->confvals['server_to']) {
+                $conf_string .= "\$server_to='{$this->confvals['server_to']}';\n";
+            }
+            if ($this->confvals['probe_to']) {
+                $conf_string .= "\$probe_to='{$this->confvals['probe_to']}';\n";
+            }
+            if ($this->confvals['ssd']) {
+                $conf_string .= "\$ssd='{$this->confvals['ssd']}';\n";
+            }
+            if ($this->confvals['ddos']) {
+                $conf_string .= "\$ddos='{$this->confvals['ddos']}';\n";
+            }
+            if ($this->confvals['limit_error']) {
+                $conf_string .= "\$limit_error='{$this->confvals['limit_error']}';\n";
+            }
+            if ($this->confvals['limit_post']) {
+                $conf_string .= "\$limit_post='{$this->confvals['limit_post']}';\n";
+            }
+            if ($this->confvals['varnish_pool']) {
+                $conf_string .= "\$varnish_pool='{$this->confvals['varnish_pool']}';\n";
+            }
+            if ($this->confvals['static_ttl']) {
+                $conf_string .= "\$static_ttl='{$this->confvals['static_ttl']}';\n";
+            }
+            if ($this->confvals['dynamic_ttl']) {
+                $conf_string .= "\$dynamic_ttl='{$this->confvals['dynamic_ttl']}';\n";
+            }
+            if ($this->confvals['keep']) {
+                $conf_string .= "\$keep='{$this->confvals['keep']}';\n";
+            }
+            if ($this->confvals['use_device_global']) {
+                $conf_string .= "\$use_device_global='{$this->confvals['use_device_global']}';\n";
+            }
+            if ($this->confvals['use_device']) {
+                foreach ($this->confvals['use_device'] as $used) {
+                    $conf_string .= "\$use_device[]='$used';\n";
+                }
+            }
+            if ($this->confvals['zone']) {
+                $conf_string .= "\$zone='{$this->confvals['zone']}';\n";
+            }
+            if ($this->confvals['pool']) {
+                $conf_string .= "\$pool='{$this->confvals['pool']}';\n";
+            }
+            $conf_string .= "?>";
         }
     }
 }
