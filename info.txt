@@ -9,16 +9,17 @@ mysql> show tables;
 3 rows in set (0.01 sec)
 
 mysql> describe users;
-+----------+---------------+------+-----+---------+-------+
-| Field    | Type          | Null | Key | Default | Extra |
-+----------+---------------+------+-----+---------+-------+
-| username | varchar(32)   | NO   | PRI |         |       |
-| password | varchar(2048) | NO   |     | NULL    |       |
-| admin    | char(1)       | YES  |     | n       |       |
-| company  | varchar(32)   | NO   | MUL | NULL    |       |
-| email    | varchar(128)  | NO   | UNI | NULL    |       |
-+----------+---------------+------+-----+---------+-------+
-5 rows in set (0.00 sec)
++-----------+---------------+------+-----+---------+-------+
+| Field     | Type          | Null | Key | Default | Extra |
++-----------+---------------+------+-----+---------+-------+
+| username  | varchar(32)   | NO   | PRI |         |       |
+| password  | varchar(2048) | NO   |     | NULL    |       |
+| admin     | char(1)       | YES  |     | n       |       |
+| company   | varchar(32)   | NO   | MUL | NULL    |       |
+| email     | varchar(128)  | NO   | UNI | NULL    |       |
+| useradmin | char(1)       | YES  |     | n       |       |
++-----------+---------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
 
 mysql> describe confs;
 +---------+-------------+------+-----+---------+-------+
