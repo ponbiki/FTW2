@@ -286,7 +286,7 @@ class BasConf implements iConf
                 }
             }
             $conf_string .= "?>";
-                        
+            \file_put_contents(iConf::tmp_path . $conf, $conf_string, LOCK_EX);
         }
     }
 }
