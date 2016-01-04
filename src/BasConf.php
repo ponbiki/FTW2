@@ -286,7 +286,9 @@ class BasConf implements iConf
         if (!\unlink(iConf::tmp_path . $conf)) {
             throw new \Exception("There was an issue removing the existing working copy of $conf");
         } else {
-            \file_put_contents(iConf::tmp_path . $conf, $conf_string, LOCK_EX);
+            if (!\file_put_contents(iConf::tmp_path . $conf, $conf_string, LOCK_EX)) {
+                throw new \Exception("There was an issue writing a new copy of $conf");
+            }
         }
     }
 }
