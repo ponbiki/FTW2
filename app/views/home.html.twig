@@ -7,20 +7,6 @@
         <meta name='keywords' content='FTW, FTW Portal, {{ meta }}'>
     {% endblock %}
 {% endblock %}
-{% block scripts %}
-    <script type='text/javascript'>
-        $(function() {
-            $( "input[type=submit], a, .jbutton" ).button();
-        });
-        $(document).ready(function() {
-            setTimeout(function() {
-                $( ".notify" ).fadeOut(1000, function () {
-                    $( ".notify" ).css({"visibility":"hidden",display:"block"}).slideUp();
-                });
-            }, 3500);
-        });
-    </script>
-{% endblock %}
 {% block content %}
     <div style='clear: both;'>
         <form method='post' action='/' class='nyicp'>
@@ -41,4 +27,18 @@
             </label>
         </form>
     </div>
+    {% block scripts %}
+    <script type='text/javascript'>
+        $(function() {
+            $( "input[type=submit], a, .jbutton" ).button();
+        });
+        $(document).ready(function() {
+            setTimeout(function() {
+                $( ".notify" ).fadeOut(1000, function () {
+                    $( ".notify" ).css({"visibility":"hidden",display:"block"}).slideUp();
+                });
+            }, 3500);
+        });
+    </script>
+    {% endblock %}
 {% endblock %}

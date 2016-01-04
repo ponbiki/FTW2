@@ -7,131 +7,6 @@
         <meta name='keywords' content='FTW, FTW Portal, {{ meta }}'>
     {% endblock %}
 {% endblock %}
-{% block scripts %}
-    <script type='text/javascript'>
-        $(function() {
-            $( "#accordion" ).accordion({
-                collapsible: true,
-                heightStyle: "content"
-            });
-        });
-        $(function() {
-            $( "#tabs" ).tabs();
-        });
-        $(function() {
-            $( "input[type=submit], a, button" ).button();
-        });
-        $(function() {
-            $( "#radio" ).buttonset();
-        });
-        $(function() {
-            $( "input[type=checkbox], a, button" ).button();
-        });
-        $(function() {
-            $( "#dialog1" ).dialog({
-                autoOpen: false,
-                show: {
-                    effect: "blind",
-                    duration: 1000
-                },
-                hide: {
-                    effect: "fold",
-                    duration: 1000
-                }
-            });
-            $( "#opener1" ).click(function() {
-                $( "#dialog1" ).dialog( "open" );
-            });
-        });
-        $(function() {
-            $( "#dialog2" ).dialog({
-                autoOpen: false,
-                show: {
-                    effect: "blind",
-                    duration: 1000
-                },
-                hide: {
-                    effect: "fold",
-                    duration: 1000
-                }
-            });
-            $( "#opener2" ).click(function() {
-                $( "#dialog2" ).dialog( "open" );
-            });
-        });
-        $(function() {
-            $( "#dialog3" ).dialog({
-                autoOpen: false,
-                show: {
-                    effect: "blind",
-                    duration: 1000
-                },
-                hide: {
-                    effect: "fold",
-                    duration: 1000
-                }
-            });
-            $( "#opener3" ).click(function() {
-                $( "#dialog3" ).dialog( "open" );
-            });
-        });
-        $(function() {
-            $( "#dialog4" ).dialog({
-                autoOpen: false,
-                show: {
-                    effect: "blind",
-                    duration: 1000
-                },
-                hide: {
-                    effect: "fold",
-                    duration: 1000
-                }
-            });
-            $( "#opener4" ).click(function() {
-                $( "#dialog4" ).dialog( "open" );
-            });
-        });
-        $(function() {
-            $( "#dialog5" ).dialog({
-                autoOpen: false,
-                show: {
-                    effect: "blind",
-                    duration: 1000
-                },
-                hide: {
-                    effect: "fold",
-                    duration: 1000
-                }
-            });
-            $( "#opener5" ).click(function() {
-                $( "#dialog5" ).dialog( "open" );
-            });
-        });
-        $(function() {
-            $( "#dialog6" ).dialog({
-                autoOpen: false,
-                show: {
-                    effect: "blind",
-                    duration: 1000
-                },
-                hide: {
-                    effect: "fold",
-                    duration: 1000
-                }
-            });
-            $( "#opener6" ).click(function() {
-                $( "#dialog6" ).dialog( "open" );
-            });
-        });
-        $(document).ready(function() {
-            setTimeout(function() {
-                $( ".notify" ).fadeOut(1000, function () {
-                    $( ".notify" ).css({"visibility":"hidden",display:"block"}).slideUp();
-                });
-            }, 3500);
-        });
-    </script>
-{% endblock %}
 {% block content %}
     <div id="tabs">
         <ul>
@@ -417,4 +292,109 @@
             </form>
         </div>
     </div>
+    {% block scripts %}
+    <script type='text/javascript'>
+        $(function() {
+            $( "#accordion" ).accordion({
+                collapsible: true,
+                heightStyle: "content"
+            });
+            $( "#tabs" ).tabs();
+            $( "input[type=submit], a, button" ).button();
+            $( "#radio" ).buttonset();
+            $( "input[type=checkbox], a, button" ).button();
+            $( "#dialog1" ).dialog({
+                autoOpen: false,
+                show: {
+                    effect: "blind",
+                    duration: 1000
+                },
+                hide: {
+                    effect: "fold",
+                    duration: 1000
+                }
+            });
+            $( "#opener1" ).click(function() {
+                $( "#dialog1" ).dialog( "open" );
+            });
+            $( "#dialog2" ).dialog({
+                autoOpen: false,
+                show: {
+                    effect: "blind",
+                    duration: 1000
+                },
+                hide: {
+                    effect: "fold",
+                    duration: 1000
+                }
+            });
+            $( "#opener2" ).click(function() {
+                $( "#dialog2" ).dialog( "open" );
+            });
+            $( "#dialog3" ).dialog({
+                autoOpen: false,
+                show: {
+                    effect: "blind",
+                    duration: 1000
+                },
+                hide: {
+                    effect: "fold",
+                    duration: 1000
+                }
+            });
+            $( "#opener3" ).click(function() {
+                $( "#dialog3" ).dialog( "open" );
+            });
+            $( "#dialog4" ).dialog({
+                autoOpen: false,
+                show: {
+                    effect: "blind",
+                    duration: 1000
+                },
+                hide: {
+                    effect: "fold",
+                    duration: 1000
+                }
+            });
+            $( "#opener4" ).click(function() {
+                $( "#dialog4" ).dialog( "open" );
+            });
+            $( "#dialog5" ).dialog({
+                autoOpen: false,
+                show: {
+                    effect: "blind",
+                    duration: 1000
+                },
+                hide: {
+                    effect: "fold",
+                    duration: 1000
+                }
+            });
+            $( "#opener5" ).click(function() {
+                $( "#dialog5" ).dialog( "open" );
+            });
+            $( "#dialog6" ).dialog({
+                autoOpen: false,
+                show: {
+                    effect: "blind",
+                    duration: 1000
+                },
+                hide: {
+                    effect: "fold",
+                    duration: 1000
+                }
+            });
+            $( "#opener6" ).click(function() {
+                $( "#dialog6" ).dialog( "open" );
+            });
+        });
+        $(document).ready(function() {
+            setTimeout(function() {
+                $( ".notify" ).fadeOut(1000, function () {
+                    $( ".notify" ).css({"visibility":"hidden",display:"block"}).slideUp();
+                });
+            }, 3500);
+        });
+    </script>
+    {% endblock %}
 {% endblock %}

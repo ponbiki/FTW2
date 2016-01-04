@@ -7,30 +7,6 @@
         <meta name='keywords' content='FTW, FTW Portal, {{ meta }}'>
     {% endblock %}
 {% endblock %}
-{% block scripts %}
-    <script type='text/javascript'>
-            $(function() {
-                $( "#tabs" ).tabs();
-            });
-            $(function() {
-                $( "input[type=submit], a, button" )
-                .button();
-            });
-            $(function() {
-                $( "#conf" ).selectmenu();
-            });
-            $(function() {
-                $( "#user" ).selectmenu();
-            });
-            $(document).ready(function() {
-                setTimeout(function() {
-                    $( ".notify" ).fadeOut(1000, function () {
-                        $( ".notify" ).css({"visibility":"hidden",display:"block"}).slideUp();
-                    });
-                }, 3500);
-            });
-        </script>
-{% endblock %}
 {% block content %}
     <div id='tabs'>
         <ul>
@@ -88,4 +64,22 @@
             </form>
         </div>
     </div>
+    {% block scripts %}
+    <script type='text/javascript'>
+        $(function() {
+            $( "#tabs" ).tabs();
+            $( "input[type=submit], a, button" )
+            .button();
+            $( "#conf" ).selectmenu();
+            $( "#user" ).selectmenu();
+        });
+        $(document).ready(function() {
+            setTimeout(function() {
+                $( ".notify" ).fadeOut(1000, function () {
+                    $( ".notify" ).css({"visibility":"hidden",display:"block"}).slideUp();
+                });
+            }, 3500);
+        });
+    </script>
+    {% endblock %}
 {% endblock %}
