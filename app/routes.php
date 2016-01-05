@@ -8,3 +8,4 @@ require 'routes/user/conf/basconf.php';
 require 'routes/user/conf/addom.php';
 require 'routes/user/conf/deldom.php';
 require 'routes/user/conf/save.php';
+require 'routes/user/account/manage.php';

@@ -10,11 +10,13 @@
 {% block content %}
     <div id='tabs'>
         <ul>
-            <li><a href='#tabs-conf' title='Select Configuration File'>Select Conf File</a></li>
-            <li><a href='#tabs-usr' title='User Options'>User Options</a></li>
+            <li><a href='#tabs-edit' title='Edit User'>Edit User</a></li>
+            {% if usradm %}
+            <li><a href='#tabs-new' title='Add User'>Add User</a></li>
+            {% endif %}
         </ul>
-        <div id='tabs-conf'>
-            <form method='post' action='/user/confselect'>
+        <div id='tabs-edit'>
+            <form method='post' action='/user/account/updateuser'>
                 <table>
                     <tr title='Configuration File'>
                         <td style='float:left;margin-top:8px;margin-right:8px;'>
@@ -38,8 +40,9 @@
                 </table>
             </form>
         </div>
-        <div id='tabs-usr'>
-            <form method='post' action='/user/account/menu'>
+        {% if usradm %}
+        <div id='tabs-new'>
+            <form method='post' action='/user/account/newuser'>
                 <table>
                     <tr title='User'>
                         <td style='float:left;margin-top:8px;margin-right:8px;'>
@@ -63,6 +66,7 @@
                 </table>
             </form>
         </div>
+        {% endif %}
     </div>
     {% block scripts %}
     <script type='text/javascript'>
@@ -70,8 +74,8 @@
             $( "#tabs" ).tabs();
             $( "input[type=submit], a, button" )
             .button();
-            $( "#conf" ).selectmenu();
-            $( "#user" ).selectmenu();
+            $( "#edit" ).selectmenu();
+            $( "#new" ).selectmenu();
         });
         $(document).ready(function() {
             setTimeout(function() {

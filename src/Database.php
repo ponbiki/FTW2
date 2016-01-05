@@ -89,6 +89,7 @@ class Database implements iDatabase
         $adm = $this->userAdmin();
         unset($this->user_list);
         if ($adm[0]['useradmin'] === 'y') {
+            $_SESSION['useradmin'] = \TRUE;
             $this->sth = $this->pdo->prepare("SELECT username FROM users WHERE company=?");
             $this->sth->execute(array($_SESSION['company']));
             $this->res = $this->sth->fetchAll(\PDO::FETCH_ASSOC);
@@ -100,6 +101,7 @@ class Database implements iDatabase
                 }
             }
         } else {
+            $_SESSION['useradmin'] = \FALSE;
             $this->user_list[] = $_SESSION['user'];
         }
         return $this->user_list;
