@@ -20,6 +20,7 @@ class Database implements iDatabase
     protected $del;
     protected $sav;
     private $maxBackup = 25;
+    public $user_list;
 
     public function __construct()
     {
@@ -80,6 +81,39 @@ class Database implements iDatabase
                 $_SESSION['confs'][] = $confarray[$i]['conf'];
                 $_SESSION['conftype'][$confarray[$i]['conf']] = $confarray[$i]['type'];
             }
+        }
+    }
+    
+    public function userOption()
+    {
+        $adm = $this->userAdmin();
+        unset($this->user_list);
+        if ($adm[0]['useradmin'] === 'y') {
+            $this->sth = $this->pdo->prepare("SELECT username FROM users WHERE company=?");
+            $this->sth->execute(array($_SESSION['company']));
+            $this->res = $this->sth->fetchAll(\PDO::FETCH_ASSOC);
+            if (!$this->res) {
+                $_SESSION['error'][] = "No users available for editing.";
+            } else {
+                foreach ($this->res as $user) {
+                    $this->user_list[] = $user['username'];
+                }
+            }
+        } else {
+            $this->user_list[] = $_SESSION['user'];
+        }
+        return $this->user_list;
+    }
+    
+    protected function userAdmin()
+    {
+        $this->sth = $this->pdo->prepare("SELECT useradmin FROM users WHERE username=?");
+        $this->sth->execute(array($_SESSION['user']));
+        $this->res = $this->sth->fetchAll(\PDO::FETCH_ASSOC);
+        if (!$this->res) {
+            $_SESSION['error'][] = "No configurations available for editing.";
+        } else {
+            return $this->res;
         }
     }
 

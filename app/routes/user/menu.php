@@ -12,7 +12,7 @@ $app->get('/user/menu', function() use ($app) {
     $con->confAvail();
     $page = "Menu";
     $meta = "User Menu";
-    $user[] = $_SESSION['user'];
+    $user = $con->userOption();
 
     $app->render('user/menu.html.twig', [
         'page' => $page,
