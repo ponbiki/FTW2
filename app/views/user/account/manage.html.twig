@@ -11,7 +11,7 @@
     <div id='tabs'>
         <ul>
             <li><a href='#tabs-edit' title='Edit User'>Edit User</a></li>
-            {% if usradm %}
+            {% if usradm not empty %}
             <li><a href='#tabs-new' title='Add User'>Add User</a></li>
             {% endif %}
         </ul>
@@ -40,7 +40,7 @@
                 </table>
             </form>
         </div>
-        {% if usradm %}
+        {% if usradm not empty %}
         <div id='tabs-new'>
             <form method='post' action='/user/account/newuser'>
                 <table>
@@ -75,7 +75,9 @@
             $( "input[type=submit], a, button" )
             .button();
             $( "#edit" ).selectmenu();
+            {% if usradm not empty %}
             $( "#new" ).selectmenu();
+            {% endif %}
         });
         $(document).ready(function() {
             setTimeout(function() {
